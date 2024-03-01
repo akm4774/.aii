@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            height: 246vh;
+        }
+
+        .roadmap {
+            position: absolute;
+            top: 0;
+            padding-left: 100px;
+            padding-top: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 20px;
+            height: 200px;
+            width: 80vw;
+        }
+
+        .red {
+            padding: 0 20px;
+            display: none;
+            position: relative;
+            top: 120px;
+        }
+
+        .black {
+
+            margin: 20px 0;
+            height: 175vh;
+            width: 8px;
+            position: relative;
+            top: 140px;
+            left: 50%;
+            border-radius: 20px;
+            border: 2px solid black;
+        }
+
+        .timeline-dot {
+            position: sticky;
+            top: 0px;
+            background-color: red;
+            height: 310px;
+            overflow: hidden;
+        }
+
+        .hello {
+            margin-right: 50px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="hello">
+        <div class="black">
+            <div class="timeline-dot"></div>
+        </div>
+        <div class="roadmap">
+            <div class="yellow"></div>
+            <div class="red" id="first">
+                <div style=" padding: 0 20px; box-shadow:10px 10px 4px rgba(0, 0, 0, 0.2);" id="mann">
+                    <h1>1st year</h1>
+                    <ul>
+                        <li>Start learning about new programming languages.</li>
+                        <li>Try and explore different domains like Machine learning, Cloud computing, AI/ML, Cyber
+                            Security etc.
+                        </li>
+                        <li>Make accounts on the platforms:
+                            <ul >
+                                <li>linkedin</li>
+                                <li>leetcode</li>
+                                <li>Github</li>
+                                <li>Codechef</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Learn about how to maintain your CGPA.
+                        </li>
+                        <li>Become consistent in coding everyday</li>
+                        <li>Now we have to study the basics of OOPS.</li>
+                        <li>Read DSA concepts. </li>
+                        <li>Start the basics of Web Development. (HTML, CSS)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="red hello" id="second">
+                <div style="box-shadow:10px 10px 4px rgba(0, 0, 0, 0.2); margin-right: 50px;">
+                    <h1>2nd year</h1>
+                    <ul>
+                        <li>Consistently study the advanced concepts of DSA (tree, graphs, DP … etc)
+                        </li>
+                        <li>Study Javascript too.
+                        </li>
+                        <li>Explore different fields like AIML, Cybersecurity, Web/App development, etc, and decide your niche technology in which you’d want to work.
+                        </li>
+                        <li>
+                            Make 1 or 2 small projects with Web Development
+                        </li>
+                        <li>Give programming contests on different websites like CodeChef, Leetcode, etc.</li>
+                        <li>Study some libraries and frameworks of JS and CSS like react JS and tailwind CSS
+                        </li>
+                        <li>Start with getting the basics of CS concepts like OS, CN, and DBMS.
+                    </ul>
+                </div>
+            </div>
+            <div class="yellow"></div>
+            <div class="yellow"></div>
+            <div class="red" id="third">
+                <div style=" padding: 0 20px; box-shadow:10px 10px 4px rgba(0, 0, 0, 0.2);">
+                    <h1>3rd year</h1>
+                    <ul>
+                        <li>Evaluate your profile and build a personal resume.
+                        </li>
+                        <li>Build a personal portfolio website and upload all your achievements on it.
+                        </li>
+                        <li>Assess your technical skills and learn about Full-stack development.
+                        </li>
+                        <li>
+                            Learn backend technologies.
+
+                        </li>
+                        <li>Learn about system design and Software engineering roles.</li>
+                        <li>Start posting all your achievements and build connections and networks on LinkedIn and Twitter.
+                        </li>
+                        <li>Start or try to find any internship opportunities.
+                        </li>
+                        <li>Post your ideas and learn from other’s projects.</li>
+                        <li>Make a major full-stack project.
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="red hello" id="fourth">
+                <div style="box-shadow:10px 10px 4px rgba(0, 0, 0, 0.2); margin-right:50px ;">
+                    <h1>4th year</h1>
+                    <ul>
+                        <li>Maintain your CGPA.
+                        </li>
+                        <li>Hone your skills more and develop more projects.
+                        </li>
+                        <li>Search and apply for more job opportunities and full-time roles.
+
+                        </li>
+                        <li>
+                            Start freelancing.
+                        </li>
+                        <li>Develop your soft skills, read aptitude, and learn proper interview etiquette</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="yellow"></div>
+        </div>
+    </div>
+    <script>
+
+        var red = document.getElementById('first');
+        var red1 = document.getElementById('second');
+        var red2 = document.getElementById('third');
+        var red3 = document.getElementById('fourth');
+
+        window.addEventListener('scroll', () => {
+            let value = window.scrollY;
+            if (value >= 0 && value <= 100) {
+                red.style.transform = 'scale(' + (1 + (100 - value) / 500) + ')';
+                red1.style.transform = 'scale(1)';
+                red2.style.transform = 'scale(1)';
+                red3.style.transform = 'scale(1)';
+                red.style.display = 'flex';
+            } else if (value > 100 && value <= 250) {
+                red.style.transform = 'scale(1)';
+                red1.style.transform = 'scale(' + (1 + (value - 80) / 500) + ')';
+                red2.style.transform = 'scale(1)';
+                red3.style.transform = 'scale(1)';
+                red1.style.display = 'flex';
+            } else if (value > 300 && value <= 500) {
+                red.style.transform = 'scale(1)';
+                red1.style.transform = 'scale(1)';
+                red2.style.transform = 'scale(' + (1 + (value - 400) / 500) + ')';
+                red3.style.transform = 'scale(1)';
+                red2.style.display = 'flex';
+            } else if (value > 475 && value <= 600) {
+                red.style.transform = 'scale(1)';
+                red1.style.transform = 'scale(1)';
+                red2.style.transform = 'scale(1)';
+                red3.style.transform = 'scale(' + (1 + (value - 500) / 500) + ')';
+                red3.style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+
+</html>

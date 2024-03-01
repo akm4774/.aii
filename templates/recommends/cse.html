@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Branch</title>
+    <style>
+        #container{
+            display: flex;
+
+            
+        }
+
+        #recom-branch{
+              height: 300px;
+              width: 500px;
+              border: 1px solid black;
+              border-radius: 20px;
+              margin-right: 10px;
+              margin-left: 5px;
+              margin-top: 10px;
+              
+
+        }
+
+        #Branch-name{
+            height: 300px;
+              width: 500px;
+              border: 1px solid black;
+              border-radius: 20px;
+              margin-right: 10px;
+             
+            
+        }
+
+        #img{
+            height: 300px;
+            width:500px;
+            border: 1px solid black;
+            border-radius: 20px;
+            margin-right: 10px;
+             
+        }
+
+        #Branch-content{
+            height: 300px;
+            width:1460px;
+            border: 1px solid black;
+            border-radius: 20px;
+            margin-top: 20px;
+            margin-left: 5px;
+        }
+
+        #branchN{
+            text-align: center;
+            margin-top: 100px;
+            font-weight: bolder;
+        }
+        ul{
+            line-height: 30px;
+            margin-left: 5px;
+            margin-top: 30px;
+            font-size: x-large;
+        }
+
+        #recB{
+            text-align: center;
+            display: inline;
+
+
+        }
+        #I{
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+
+
+           
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <div id="recom-branch">
+       <h1 id="recB">Recommended Branch</h1>
+       <button>Download</button>
+       <div id="I">
+       <label for="interest">Interest:</label>
+       <!-- <input type="text" id="interest" name="interest" placeholder="Your Interest"> -->
+       <br><br>
+       <label for="password">Course Eligibility:</label>
+       <!-- <input type="password" id="password" name="password" placeholder="Enter your password"> -->
+       <br><br>
+    </div>
+
+    </div>
+
+    <div id="Branch-name">
+        <h1 id="branchN">Computer Science<br> Engineering</h1>
+       
+        
+    </div>
+
+    <div id="img">
+        <img src="/static/download.jpeg" alt="Error">
+    </div>
+</div>
+    <div id="Branch-content">
+        <ul>
+            <li>BTech CSE is a four-year undergraduate program that focuses on practical and theoretical knowledge of computer hardware and advanced software.</li>
+            <li>The program focuses on computer software and hardware process design and development.</li>
+            <li>It emphasizes the principles of programming and networking while also covering a wide range of topics.</li>
+            <li>CSE prepares students for a variety of roles in technology by combining theory and practical skills, with a focus on problem solving and innovation.</li>
+        </ul> 
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Computer Science Page{% endblock %}
+
+{% block content %}
+{{ super() }}
+
+
+{% endblock %}

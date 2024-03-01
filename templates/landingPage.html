@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College recommendation System</title>
+    <style>
+        body,html{
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(6, 174, 121);;
+    }
+    .centered-div {
+        width: 1200px; /* Adjust as needed */
+        height: 620px; /* Adjust as needed */
+        background-color: rgb(41, 142, 182);;
+        text-align: center;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+  display: flex;
+  margin-left: 50px;
+  margin-top: 30px;
+  
+}
+
+.item {
+  /* Adjust as needed */
+  width: 300px;
+  height: 350px;
+  border: 1px solid black;
+  margin:50px;
+  text-align: center;
+  /* line-height: 100px; */
+  transition: width 0.3s ease;
+  border-radius: 8px;
+  text-align: justify;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  overflow: hidden;
+}
+
+.item:hover { 
+   background-color:#c0888a;
+
+  transform: scale(1.4);
+  overflow: visible;
+}
+.item1:hover{
+  font-size: 12px;
+}
+
+#btn{
+    background-color:rgb(114, 185, 232);
+    font-size: xx-large;
+    border-radius:20px;
+    margin-top: 80px;
+   
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+    </style>
+</head>
+<body>
+    <div class="centered-div">
+        <h1>Emerging Technologies</h1>
+        <div class="container">
+            <div class="item"> 
+                <h1 id="civil" style="text-align: center;">Electronics</h1>
+                <div class="ul">
+                    <ul>
+                <li>
+                    Electrical engineering is producing renewable energy with innovative technology like wind turbines and solar panels.
+                </li>
+                <li>
+                    Smart grids, power management tools, and energy-efficient lighting all contribute to pollution reduction and electricity conservation.
+                </li>
+                <li>
+                    Creating spaces for electric vehicle charging and energy storage contributes to more environmentally friendly transportation.
+                </li>
+            </ul>
+                </div>
+            </div>
+
+            <div class="item item1">
+                <h1 id="ec" style="text-align: center;">Mechanical</h1>
+                <div class="ul">
+                    <ul>
+                    <li > In mechanical engineering, new technologies such as 3D printing, artificial intelligence, and robotics are transforming the way things are manufactured.
+                    </li>
+                    <li> These innovations enable enterprises to produce items faster and with less waste, making operations more efficient.
+                    </li>
+                    <li>Emphasis on energy-efficient design and renewable energy integration in mechanical engineering projects.
+                    </li>
+                    <li>Implementing green manufacturing techniques and materials to reduce the environmental impact of the manufacturing business.
+                    </li>
+                    <li>Using modern HVAC systems and energy management solutions to boost energy efficiency in buildings and factories.
+                    </li>
+                    <li>Integrating smart sensors and predictive maintenance techniques to increase equipment efficiency and reduce downtime, which contributes to sustainability goals. 
+
+                    </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="item">
+                <h1 id="ec" style="text-align: center;">Civil</h1>
+                <div class="ul">
+                    <ul>
+                    <li>Civil engineers focus on making buildings and infrastructure that are good for the environment and future generations.
+</li>
+                    <li> Programs like LEED and BREEAM help encourage using sustainable design ideas.
+                    </li>
+                    <li> Using materials like recycled stuff and engineered wood helps reduce waste and pollution.
+                    </li>
+                    <li> Designs that save energy and use renewable power sources help cut down on pollution.
+                    </li>
+                    <li>Smart technology and gadgets help keep track of how resources are used and make things more efficient.
+                    </li>
+                </ul>
+                </div>
+              </div>
+            <!-- Add more divs here if needed -->
+          </div>
+          <button id="btn"><a href=index.html>Next</a></button>
+    </div>
+    <script>// Get the content of the div
+        var content = document.getElementById(".ul").innerHTML;
+        
+        // Display the content (for demonstration purposes)
+        console.log(content);
+        </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+iframe{
+    border: none;
+    background-color: rgb(173, 221, 240);
+    
+}
+.py-5{
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.card-registration .select-arrow {
+    top: 13px;
+}
+.label{
+    font-family: "Roboto Slab";
+    font-size: 13px;
+}
+.pt-2{
+    text-align: center;
+}
+.select{
+    height: 50px;
+    font-size: 16px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  text-align: center;
+}
+#higher_12{
+    display: none;
+}
+#diploma1{
+    display: none;
+}
+.form-check label{
+    margin:0 1rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding:5px 10px;
+  }
+@media screen and (max-width:652px) {
+    .grid-container{
+        grid-template-columns: 1fr 1fr 1.2fr;
+        /* width: 85vw; */
+        padding: 0;
+    }
+    .grid-item label{
+        font-size: 12px;
+    }
+}
+
+.grid-item {
+    border: 0px solid rgba(0, 0, 0, 0.8);
+    padding:1px;
+
+ }
+ .form-control-lg{
+    font-size: 16px;
+ }
+ p{
+    font-size: small;
+ }
+
+.mt-4-pt-2{
+    margin: auto;
+    text-align: center;
+}
+@media (min-width: 1200px )
+{
+    .col-xl-7 {
+        -ms-flex: 0 0 58.333333%;
+        flex: 0 0 100%;
+        max-width: 90%;
+    }
+    .row1{
+        display: grid;
+        grid-template-columns:1fr 1fr 1fr ;
+    }
+    .form-control-lg{
+        width: 250px;
+    }
+    .col-md-6{
+        width: 100%;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        padding:5px 10px;
+      }
+}
+@media (min-width: 768px)
+{
+    .col-md-6 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.interest-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap</title>
+<style>
+       body {
+           
+           margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+          background: rgb(33,185,217);
+background: linear-gradient(331deg, rgba(33,185,217,1) 20%, rgba(98,88,255,1) 53%, rgba(139,243,255,1) 80%, rgba(139,243,255,1) 81%);
+              }
+
+              
+  /* CSS styles */
+  #b1-title{
+ color: rgb(0, 0, 0);
+ font-size: 5.0rem;
+  }
+  .design-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #1f1f1f; */
+    min-height: 100vh;
+    /* padding: 100px 0; */
+    font-family: 'Jost', sans-serif;
+  }
+
+  .timeline {
+    padding: 100px 0;
+    width: 80%;
+    height: 1000px;
+    max-width: 100vw;
+    margin: 0 100px;
+    display: grid;
+    /* flex-direction: column; */
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+
+  .timeline-content {
+    background: #fff;;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 5px;
+    color: black;
+    padding: 1.75rem;
+    transition: 0.4s ease;
+    overflow-wrap: break-word !important;
+    margin: 1rem;
+    margin-bottom: 20px;
+    border-radius: 6px;
+  }
+  .timeline-component:nth-child(2n+1){
+    box-shadow:10px 10px 4px rgba(0, 0, 0, 0.2); 
+  }
+  .timeline-component:nth-child(2n){
+    box-shadow:-10px 10px 4px rgba(0, 0, 0, 0.2); 
+  }
+
+  .timeline-component {
+    margin: 0px 20px 20px 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr 3px 1fr;
+      gap: 20px;
+    }
+
+    .timeline-middle {
+      position: relative;
+      top: -25px;
+      background-image: linear-gradient(45deg, #f27121, #e94057, #8a2387);
+      width: 3px;
+      height: 110%;
+    }
+
+    .main-middle {
+      opacity: 0;
+    }
+
+    .timeline-circle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-image: linear-gradient(45deg, #f27121, #e94057, #8a2387);
+      transform: translateX(-50%);
+    }
+  }
+  @media screen and (max-width:572px) {
+    .timeline{
+      display:block ;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HTML content -->
+<section class="design-section">
+  <h1 id="b1-title"></h1>
+  <div id="b1" style="display: none; position: absolute; color: #007bff;">{{ b1 }}</div>
+  <div class="timeline">
+    <div class="timeline-empty"></div>
+    <div class="timeline-middle">
+      <div class="timeline-circle"></div>
+    </div>  
+
+    <div class="timeline-component timeline-content" id="first">
+      <h3>Year 1</h3>
+      <p>{{ roadmapData.yr1 }}</p>
+    </div>
+    <div class="timeline-component timeline-content" id="second">
+      <h3>Year 2</h3>
+      <p>{{ roadmapData.yr2 }}</p>
+    </div>
+    <div class="timeline-middle">
+      <div class="timeline-circle"></div>
+    </div>
+    <div class="timeline-empty"></div>
+    <div class="timeline-empty"></div>
+    <div class="timeline-middle">
+      <div class="timeline-circle"></div>
+    </div>
+    <div class="timeline-component timeline-content" id="third">
+      <h3>Year 3</h3>
+      <p>{{ roadmapData.yr3 }}</p>
+    </div>
+    <div class="timeline-component timeline-content" id="fourth">
+      <h3>Year 4</h3>
+      <p>{{ roadmapData.yr4 }}</p>
+    </div>
+    <div class="timeline-middle">
+      <div class="timeline-circle"></div>
+    </div>
+    
+    <div class="timeline-empty"></div>
+  </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+      var b1 = $("#b1").text().trim();
+      console.log("Selected branch:", b1);
+      $("#b1-title").text(b1.toUpperCase() + " Roadmap");
+  
+      // Check if the roadmap for b1 exists
+      if (roadmaps.hasOwnProperty(b1)) {
+        var roadmap_b1 = roadmaps[b1];
+        populateYearContent(roadmap_b1);
+      } else {
+        console.log("Roadmap for", b1, "does not exist.");
+      }
+  
+      // Function to populate the content for each year
+function populateYearContent(roadmapData) {
+  console.log("Roadmap data:", roadmapData); // Log the entire roadmap data object
+  for (var i = 1; i <= 4; i++) {
+    var content = roadmapData["yr" + i];
+    console.log("Content for year " + i + ":", content); // Log the content for each year
+    $("#yr" + i + "_content").html(content);
+  }
+}
+    });
+    var red = document.getElementById('first');
+        var red1 = document.getElementById('second');
+        var red2 = document.getElementById('third');
+        var red3 = document.getElementById('fourth');
+
+        window.addEventListener('scroll', () => {
+            let value = window.scrollY;
+            if (value >= 0 && value <= 100) {
+                red.style.transform = 'scale(' + (1 + (100 - value) / 700) + ')';
+                red1.style.transform = 'scale(1)';
+                red2.style.transform = 'scale(1)';
+                red3.style.transform = 'scale(1)';
+                red.style.display = 'flex';
+            } else if (value > 120 && value <= 250) {
+                red.style.transform = 'scale(1)';
+                red1.style.transform = 'scale(' + (1 + (value - 170) / 600) + ')';
+                red2.style.transform = 'scale(1)';
+                red3.style.transform = 'scale(1)';
+                red1.style.display = 'flex';
+            } else if (value > 400 && value <= 500) {
+                red.style.transform = 'scale(1)';
+                red1.style.transform = 'scale(1)';
+                red2.style.transform = 'scale(' + (1 + (value - 410) / 650) + ')';
+                red3.style.transform = 'scale(1)';
+                red2.style.display = 'flex';
+            } else if (value > 520 && value <= 600) {
+                red.style.transform = 'scale(1)';
+                red1.style.transform = 'scale(1)';
+                red2.style.transform = 'scale(1)';
+                red3.style.transform = 'scale(' + (1 + (value - 500) / 650) + ')';
+                red3.style.display = 'flex';
+            }
+        });
+  </script>
+  
+<script src="/static/roadmaps.js"></script>
+</body>
+</html>

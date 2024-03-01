@@ -1,0 +1,371 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>college recommended system</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/cities.js"></script>
+  <style>
+  </style>
+</head>
+
+<body>
+  <section class="gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card shadow-2-strong card-registration" style="border-radius: 15px; ">
+            <div class="card-body p-4 p-md-5">
+              <form id="form" action="/submit_form" method="post">
+
+                <div class="row row1 row2">
+                  <div class="col-md-6">
+
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="fullName">Full Name</label>
+                      <input type="text" id="fullName" class="form-control form-control-lg" name="Full_name" required />
+                    </div>
+
+                  </div>
+                  <div class="col-md-6">
+
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="email">Email</label>
+                      <input type="email" id="email" class="form-control form-control-lg" name="Email" required />
+
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 pb-2">
+
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="family_income">Family Income</label>
+                      <input type="number" id="family_income" class="form-control form-control-lg" name="Family_income"
+                        required />
+                      <label for="family_income" class="form-label label">Please enter income in rupees</label>
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="row row1 row2">
+                  <div class="col-md-6">
+
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="state">State</label>
+                      <select onchange="print_city('city', this.selectedIndex);" id="state" name="State"
+                        class="form-control form-control-lg" required></select>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6">
+
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="city">City</label>
+                      <select id="city" class="form-control form-control-lg" name="City" required></select>
+                      <script language="javascript">print_state("state");</script>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 pb-2">
+
+
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="jee_rank">JEE Rank</label>
+                      <input type="number" id="jee_rank" class="form-control form-control-lg" name="jee_rank" />
+                      <label for="jee_rank" class="form-label label">Please enter rank in numbers</label>
+
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- <div class="row row1" id="diploma1">
+                  <div class="col-md-6 mb-4">
+
+                    <label class="form-label select-label font-weight-bold" for="branch">Diploma Branch</label>
+                    <select class="form-control-lg form-control" id="branch" name="diploma_branch">
+                      <option value="" disabled selected>Select an option</option>
+                      <option value="Management">Management</option>
+                      <option value="Medical">Medical</option>
+                      <option value="Engineering">Engineering</option>
+                      <option value="Arts">Arts</option>
+                    </select>
+
+                  </div>
+                  <br>
+
+                  <div class="col-md-6 mb-4 pb-2">
+
+                    <div class="form-outline row3">
+                      <label class="form-label font-weight-bold " for="diploma">Diploma Percentage</label>
+                      <input type="number" id="diploma" max="100" min="0" class="form-control form-control-lg"
+                        name="diploma_per" />
+
+
+                    </div>
+
+                  </div>
+                </div> -->
+
+                <div class="row row1 row2">
+
+                  <div class="col-md-6">
+                    <div class="form-outline">
+                      <label class="form-label select-label font-weight-bold" for="12th_branch">12th Branch</label>
+                      <select class="form-control-lg form-control" id="12th_branch" name="branch_12" onclick="change()">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="PCM" >PCM</option>
+                        <option value="PCB">PCB</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Arts">Arts</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pb-2">
+                  <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="12th_marks">12th Percentage</label>
+                      <input type="number" id="12th_marks" max="100" min="0" class="form-control form-control-lg"
+                        name="per_12" />
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="row" id="interest">
+                  <div class="col-12">
+                    <label for="interest" class="interest font-weight-bold">Interests</label required><br>
+                    <div class="interest-container">
+                        
+                      <div class="grid-item">
+                        <input class="radio-label" type="radio" id="technology" name="interests" 
+                        value="technology" onclick="toggleButton()">
+                        <label for="technology" >Technology</label>
+                      </div>
+                      <div class="grid-item">
+                        <input class="radio-label" type="radio" id="administration" name="interests"
+                          value="administration" onclick="toggleButton()">
+                        <label for="administration">Administration </label>
+                      </div>
+                      <div></div>
+                      <div class="grid-item">
+                        <input class="radio-label" type="radio" id="finance-accounting" name="interests"
+                          value="finance-accounting" onclick="toggleButton()">
+                        <label for="finance-accounting" >Finance & Accounting</label><br>
+                      </div>
+                      <div class="grid-item">
+                        <input class="radio-label" type="radio" id="computer-application" name="interests"
+                          value="computer-application" onclick="toggleButton()">
+                        <label for="computer-application" >Computer Application</label>
+                      </div>
+                      <div></div>
+                      <div class="grid-item">
+                        <input class="radio-label" type="radio" id="pharmacology" name="interests" 
+                        value="pharmacology" onclick="toggleButton()">
+                        <label for="pharmacology" >Pharmacology</label>
+                      </div>
+                      <div class="grid-item">
+                        <input class="radio-label" type="radio" id="agriculture" name="interests" 
+                        value="agriculture" onclick="toggleButton()">
+                        <label for="agriculture" >Agriculture</label>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="row" style="display: none; margin:50px 0;" id="frame_tech">
+                  <div class="col-12">
+                    <div style="margin-bottom: 20px;">
+
+                      <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
+                          <label for="prev" class="font-weight-bold">Change interests</label>
+                    </div>
+                    <iframe src="/technology" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+
+                  </div>
+                </div>
+                <div class="row" style="display: none; margin:50px 0;" id="frame_admin">
+                  <div class="col-12">
+                    <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
+                        <label for="prev" class="font-weight-bold">Change interests</label>
+                    <iframe src="/administration" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+
+                  </div>
+                </div>
+                <div class="row" style="display: none; margin:50px 0;" id="frame_finance">
+                  <div class="col-12">
+                    <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
+                        <label for="prev" class="font-weight-bold">Change interests</label>
+                    <iframe src="/finance" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+
+                  </div>
+                </div>
+                <div class="row" style="display: none; margin:50px 0;" id="frame_computer">
+                  <div class="col-12">
+                    <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
+                        <label for="prev" class="font-weight-bold">Change interests</label>
+                    <iframe src="/computer_app" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+
+                  </div>
+                </div>
+                <div class="row" style="display: none; margin:50px 0;" id="frame_pharma">
+                  <div class="col-12">
+                    <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
+                        <label for="prev" class="font-weight-bold">Change interests</label>
+                    <iframe src="/pharmacology" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+
+                  </div>
+                </div>
+                <div class="row" style="display: none; margin:50px 0;" id="frame_agri">
+                  <div class="col-12">
+                    <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
+                        <label for="prev" class="font-weight-bold">Change interests</label>
+                    <iframe src="/agriculture" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+
+                  </div>
+                </div>
+
+                <br>
+                <label class="label">Share your preferences to tailor recommendations, finding the best education fit
+                  aligned with your goals.</label>
+                <br>
+
+                <div class="mt-4-pt-2" style="text-align: center;">
+                  <input class="btn btn-primary btn-lg"  type="submit" value="Submit" />
+                </div>
+            <input type="hidden" id="selected-interests" name="selected_interests" value="">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.getElementById("form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var iframe = document.getElementById("frame");
+        var iframeDocument = iframe.contentWindow.document;
+        var selectedCheckboxes = iframeDocument.querySelectorAll('input[name="interest"]:checked');
+        var selectedInterests = [];
+        selectedCheckboxes.forEach(function (checkbox) {
+            selectedInterests.push(checkbox.value);
+        });
+
+        // Set the value of the hidden input field to the selected interests
+        document.getElementById("selected-interests").value = selectedInterests.join(", ");
+
+        // Submit the form programmatically
+        document.getElementById("form").submit();
+    });
+</script>
+  <script>
+    function toggleButton() {
+      var Change_Interest = document.getElementById('Change_Interest')
+      var frame_tech = document.getElementById('frame_tech')
+      var frame_admin = document.getElementById('frame_admin')
+      var frame_finance = document.getElementById('frame_finance')
+      var frame_computer = document.getElementById('frame_computer')
+      var frame_pharma = document.getElementById('frame_pharma')
+      var frame_agri = document.getElementById('frame_agri')
+      var tech = document.getElementById('technology')
+      var admin = document.getElementById('administration')
+      var finance = document.getElementById('finance-accounting')
+      var computer = document.getElementById('computer-application')
+      var pharma = document.getElementById('pharmacology')
+      var agri = document.getElementById('agriculture')
+      var interests = document.getElementById('interests')
+
+      if (tech.checked) {
+        frame_tech.style.display = 'grid';
+        frame_admin.style.display=frame_finance.style.display =frame_computer.style.display=frame_pharma.style.display = frame_agri.style.display =interest.style.display ='none';
+      }
+      
+      else if (admin.checked) {
+          frame_admin.style.display = 'grid';
+          frame_tech.style.display=frame_finance.style.display =frame_computer.style.display=frame_pharma.style.display = frame_agri.style.display =interest.style.display ='none';
+        } 
+      else if (finance.checked) {
+          frame_finance.style.display = 'grid';
+          frame_admin.style.display=frame_tech.style.display =frame_computer.style.display=frame_pharma.style.display = frame_agri.style.display =interest.style.display ='none';
+        } 
+        else if (computer.checked) {
+          frame_computer.style.display = 'grid';
+          frame_admin.style.display=frame_finance.style.display =frame_tech.style.display=frame_pharma.style.display = frame_agri.style.display =interest.style.display ='none';
+        }
+        else if (pharma.checked) {
+          frame_pharma.style.display = 'grid';
+          frame_admin.style.display=frame_finance.style.display =frame_computer.style.display=frame_tech.style.display = frame_agri.style.display =interest.style.display ='none';
+        }
+      else if(agri.checked) {
+        frame_agri.style.display = 'grid';
+        frame_admin.style.display=frame_finance.style.display =frame_computer.style.display=frame_pharma.style.display = frame_tech.style.display =interest.style.display ='none';
+      }
+      else {
+        interest.style.display = 'grid';
+        frame_admin.style.display=frame_finance.style.display =frame_computer.style.display=frame_pharma.style.display = frame_agri.style.display =frame_tech.style.display ='none';
+      }
+    }
+
+    // Function to handle visibility of radio buttons based on 12th percentage
+    function handleRadioVisibility() {
+    var per_12 = parseFloat(document.getElementById("12th_marks").value);
+
+    // Get all radio buttons
+    var radioButtons = document.querySelectorAll('input[name="interests"]');
+
+    if (per_12 >= 60) {
+        // Display all radio buttons
+        radioButtons.forEach(function(radio) {
+            radio.style.display = "inline";
+        });
+    } else if (per_12 >= 50 && per_12 < 60) {
+        // Hide BCA and make other radio buttons inline
+        document.getElementById("computer-application").style.display = "none";
+        radioButtons.forEach(function(radio) {
+            if (radio.id !== "computer-application") {
+                radio.style.display = "inline";
+            }
+        });
+    } else if (per_12 >= 45 && per_12 < 50) {
+        // Hide BBA, BCA, Bsc, B.Com and make other radio buttons inline
+        document.getElementById("technology").style.display = "none";
+        document.getElementById("administration").style.display = "none";
+        document.getElementById("finance-accounting").style.display = "none";
+        document.getElementById("computer-application").style.display = "none";
+        radioButtons.forEach(function(radio) {
+            if (radio.id !== "technology" && radio.id !== "administration" && radio.id !== "finance-accounting" && radio.id !== "computer-application") {
+                radio.style.display = "inline";
+            }
+        });
+    } else {
+        // Hide all radio buttons and display message
+        radioButtons.forEach(function(radio) {
+            radio.style.display = "none";
+        });
+        document.getElementById("message").innerText = "Sorry, Not applicable";
+    }
+}
+
+// Add event listener to trigger visibility change on input change
+document.getElementById("12th_marks").addEventListener("input", handleRadioVisibility);
+
+// Add event listeners to radio buttons
+document.querySelectorAll('input[name="interest"]').forEach(function(radio) {
+    radio.addEventListener("click", handleRadioVisibility);
+});
+
+// Initial visibility check
+handleRadioVisibility();
+  </script>
+
+</body>
+
+</html>
+{% endblock %}

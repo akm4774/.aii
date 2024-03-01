@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .chart-section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chartMenu {
+            width: 100vw;
+            height: 40px;
+            color: rgba(54, 162, 235, 1);
+            
+        }
+        .chartMenu p {
+            padding: 5px;
+            font-size: 20px;
+            text-align: center;
+        }
+        .chartCard {
+            width: 100vw;
+            height: calc(100vh - 40px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chartBox {
+            width: 700px;
+            padding: 5px;
+            margin: 0;
+            border-radius: 20px;
+            border: solid 3px rgba(54, 162, 235, 1);
+            background: white;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-section">
+        <div class="chartMenu">
+            <p>Placement Chart of previous years</p>
+        </div>
+        <div class="chartCard">
+            <div class="chartBox">
+                <canvas id="myBranchChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        drawBranchChart();
+
+        async function drawBranchChart() {
+            const datapoints = await getBranchData();
+            const data = {
+                labels: datapoints.labels,
+                datasets: [{
+                    label: "No. of Placements",
+                    data: datapoints.CS,
+                    backgroundColor: 'rgba(86, 45, 212, 0.7)',
+                    borderColor: 'rgba(86, 45, 212, 1)',
+                    borderWidth: 0.8
+                }]
+            };
+
+            
+            const config = {
+                type: 'bar',
+                data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            // render init block
+            const myBranchChart = new Chart(
+                document.getElementById('myBranchChart'),
+                config
+            );
+
+        };
+
+        async function getBranchData() {
+            const url = "static/branchwise.csv";
+            const response = await fetch(url);
+            const tabledata = await response.text();
+
+            let labels = [];
+            let CS = [];
+
+            const table = tabledata.split("\n").slice(1);
+            table.forEach(row => {
+                const column = row.split(",");
+                const year = column[0];
+                labels.push(year);
+                CS.push(column[1]);
+            });
+
+            return {
+                labels,
+                CS
+            };
+        };
+    </script>
+</body>
+</html>
