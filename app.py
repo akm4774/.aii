@@ -26,6 +26,12 @@ def submit_form():
     b1 = "None"
     if len(recommendations) == 3:
         b1, b2, b3 = recommendations
+    elif len(recommendations) == 2:
+        b1, b2 = recommendations
+        b3 = "None"
+    elif len(recommendations) == 1:
+        b1 = recommendations
+        b2, b3 = "None", "None"
     else:
         b2, b3 = "None", "None"
     if b1 == "None":

@@ -185,7 +185,7 @@
                       <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
                           <label for="prev" class="font-weight-bold">Change Course</label>
                     </div>
-                    <iframe src="/technology" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                    <iframe src="/technology" frameborder="1" id="frame-technology" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
@@ -193,7 +193,7 @@
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
                         <label for="prev" class="font-weight-bold">Change Course</label>
-                    <iframe src="/administration" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                    <iframe src="/administration" frameborder="1" id="frame-administration" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
@@ -201,7 +201,7 @@
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
                         <label for="prev" class="font-weight-bold">Change Course</label>
-                    <iframe src="/finance" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                    <iframe src="/finance" frameborder="1" id="frame-finance-accounting" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
@@ -209,7 +209,7 @@
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
                         <label for="prev" class="font-weight-bold">Change Course</label>
-                    <iframe src="/computer_app" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                    <iframe src="/computer_app" frameborder="1" id="frame-computer-application" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
@@ -217,7 +217,7 @@
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
                         <label for="prev" class="font-weight-bold">Change Course</label>
-                    <iframe src="/pharmacology" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                    <iframe src="/pharmacology" frameborder="1" id="frame-pharmacology" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
@@ -225,7 +225,7 @@
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
                         <label for="prev" class="font-weight-bold">Change Course</label>
-                    <iframe src="/agriculture" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                    <iframe src="/agriculture" frameborder="1" id="frame-agriculture" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
@@ -249,9 +249,21 @@
   <script>
     document.getElementById("form").addEventListener("submit", function (event) {
         event.preventDefault();
-        var iframe = document.getElementById("frame");
+        // Get the ID of the selected radio button
+        var crs = document.querySelector('input[name="interests"]:checked').id;
+
+        // Construct the iframe ID based on the selected radio button's ID
+        var iframeID = "frame-" + crs;
+
+        // Get the iframe using the constructed ID
+        var iframe = document.getElementById(iframeID);
         var iframeDocument = iframe.contentWindow.document;
         var selectedCheckboxes = iframeDocument.querySelectorAll('input[name="interest"]:checked');
+        // Check if less than three checkboxes are selected
+        if (selectedCheckboxes.length < 3) {
+            alert("Please select at least three interests.");
+            return; // Prevent form submission
+        }
         var selectedInterests = [];
         selectedCheckboxes.forEach(function (checkbox) {
             selectedInterests.push(checkbox.value);

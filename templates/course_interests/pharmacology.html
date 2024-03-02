@@ -108,19 +108,30 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 
               <div id="error-message" style="display: none; color: red;">Please select only five options.</div>
             </form>
-    <script>
-        document.getElementById("form").addEventListener("submit", function (event) {
-        var selectedCheckboxes = document.querySelectorAll('input[name="interest"]:checked');
-        console.log(selectedCheckboxes)
-        if (selectedCheckboxes.length>=3 && selectedCheckboxes.length <= 5) {
-          console.log("submitted")
-          document.getElementById("error-message").style.display = "none";
-        }
-        else {
-          event.preventDefault(); 
-          document.getElementById("error-message").style.display = "block";
-          }
-      });
-    </script>
+            <script>
+              // Get all checkboxes
+              var checkboxes = document.querySelectorAll('input[name="interest"]');
+              // Initialize counter for selected checkboxes
+              var selectedCount = 0;
+          
+              // Add event listener to each checkbox
+              checkboxes.forEach(function (checkbox) {
+                  checkbox.addEventListener('change', function () {
+                      // If checkbox is checked and count is less than or equal to 5
+                      if (this.checked && selectedCount < 5) {
+                          // Increment the selected count
+                          selectedCount++;
+                      } else if (!this.checked) {
+                          // If checkbox is unchecked, decrement the selected count
+                          selectedCount--;
+                      } else {
+                          // If count is already 5, prevent checking the checkbox
+                          this.checked = false;
+                          // Display alert
+                          alert("You can only select up to 5 checkboxes.");
+                      }
+                  });
+              });
+          </script>
 </body>
 </html>
