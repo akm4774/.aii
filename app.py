@@ -9,25 +9,11 @@ client = MongoClient("mongodb://127.0.0.1:27017/")
 db = client['college_recommendation_system']
 collection = db['registered_data']
 
-#def submit():
- #   if request.method == 'POST':
-  #      #database
-   #     print('Form data submitted successfully!')
-    #    #user_interest = "string of interests"
-     #   #user_rank
-      #  #family_income
-       # data = ["NLP, Big Data, App Development", 6789 , 100000]
-        #return data
-#@app.route('/roads')
-#def road():
-#    b1 = "AIML"
-#    roadmap_data = roadmaps.get(b1, {})  # Get the roadmap data for the branch
-#    return render_template('roadmap.html', b1 = b1, roadmapData=roadmap_data, roadmaps = roadmaps)
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
     # Process form data
-    rank = int(request.form.get('jee_rank')) # type: ignore
+    rank = int(request.form.get('jee_rank')) if request.form.get('jee_rank') else 0# type: ignore
     income = int(request.form.get('Family_income')) # type: ignore
     binterests = request.form.get('selected_interests')
     course = request.form.get('interests')
@@ -36,11 +22,31 @@ def submit_form():
     print(selected_interests, rank, income, course)
      # Call get_recommendation function
     recommendations = predict_top_unique_branches(selected_interests, rank, course=course)
-    b1 = recommendations[0]
-    if len(recommendations) > 1:
-        b2, b3 = recommendations[1], recommendations[2]
-    session['b1'] = b1.upper()
-    return render_template('main.html', b1=b1.upper(), b2=b2.upper() if b2 else None, b3=b3.upper() if b3 else None, interest=selected_interests, crs=course)
+    print(recommendations)
+    b1 = "None"
+    if len(recommendations) == 3:
+        b1, b2, b3 = recommendations
+    else:
+        b2, b3 = "None", "None"
+    if b1 == "None":
+        # Set default values based on the course
+        if course == "technology":
+            b1 = "Cyber Security"
+        elif course == "administration":
+            b1 = "Hons(Retail Mgmt & E Comm.)"
+        elif course == "finance-accounting":
+            b1 = "BCom(Hons)"
+        elif course == "computer-application":
+            b1 = "BCA"
+        elif course == "agriculture":
+            b1 = "BSC(Agri)"
+        elif course == "pharmacology":
+            b1 = "B.Pharma"
+        # Add more cases as needed
+    
+    session['b1'] = b1
+    print(b1)
+    return render_template('main.html', b1=b1, b2=b2.upper() if b2 else None, b3=b3.upper() if b3 else None, interest=selected_interests, crs=course)
  
 @app.route('/roadmap')
 def roadmap():
