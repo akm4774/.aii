@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +51,7 @@ background: linear-gradient(331deg, rgba(33,185,217,1) 20%, rgba(98,88,255,1) 53
     background: #fff;;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 80px;
     border-radius: 5px;
     color: black;
     padding: 1.75rem;
@@ -214,3 +216,4 @@ function populateYearContent(roadmapData) {
 <script src="/static/roadmaps.js"></script>
 </body>
 </html>
+{% endblock %}

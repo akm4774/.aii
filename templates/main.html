@@ -9,8 +9,9 @@
     <title>Branch Content Recommendation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <style>
-        
-
+        body{
+            background-color: skyblue;
+        }
         #content-container {
             max-width: 80vw;
             margin: 50px auto;
@@ -18,37 +19,27 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-x: hidden; /* Prevent horizontal overflow */
         }
 
-        
-        h2 {
+        h1 {
+            margin: 0;
+            padding: 0 20px;
             color: #4285f4;
             border-bottom: 2px solid #4285f4;
-            padding-bottom: 5px;
             margin-bottom: 20px;
-        }
-
-        p {
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .subtitle {
-            margin-bottom: 20px;
-            color: #777;
         }
 
         .line {
             border-top: 1px solid #ddd;
             margin-bottom: 20px;
         }
+
+        .subtitle p {
+            color: #777;
+            margin-bottom: 10px;
+        }
+
         .print-icon {
             position: absolute;
             top: 20px;
@@ -56,6 +47,7 @@
             cursor: pointer;
             font-size: 24px;
         }
+
         .tooltip {
             position: absolute;
             top: 40px;
@@ -63,13 +55,13 @@
             background-color: #333;
             color: #fff;
             padding: 5px 10px;
-            border-radius: 5px;
+            border-radius: 10px;
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .print-icon:hover+.tooltip {
+        .print-icon:hover + .tooltip {
             visibility: visible;
             opacity: 1;
         }
@@ -92,12 +84,12 @@
 
 <body>
     <div id="content-container">
-        <h1 style="padding:0 20px;">Branch Content Recommendation</h1>
-        <div class="line"></div>
+        <h1 style="padding:0 20px; text-align: center;">Branch Content Recommendation</h1>
+        <!--<div class="line"></div>-->
 
         <div class="subtitle">
-            <p><strong>Based on your interest preferences:</strong> '{{ interest }}'</p>
-            <p><strong>Your eligible course:</strong> '{{ crs }}'</p>
+            <p><strong>Based on your interest preferences:</strong> {{ interest }}</p>
+            <p><strong>Your eligible course:</strong> {{ crs }}</p>
             <p><strong>Our model recommends you this branch:</strong></p>
         </div>
 
@@ -109,7 +101,7 @@
         {{ super() }}
     </div>
     <div class="print-icon" onclick="window.print()">
-        <i class="fas fa-print"></i>
+        <i class="fas fa-download print-icon"></i>
         <div class="tooltip">Download</div>
     </div>
 
@@ -159,38 +151,39 @@
                 "content": "The B.Tech (CSE) - Data Science & Analytics program, focuses on interdisciplinary data science and analytics. The program combines data inference, algorithm development, and technology to solve complex problems. It imparts skills in mathematical expertise, technology hacking, and business strategy. The program focuses on using data to generate business value and make smarter decisions.",
                 "image": "/static/images/DS.jpg"
             },
-            "B.Pharma": {
-                "content": "Bachelor of Pharmacy content",
-                "image": "/static/images/Bpharma.jpg"
-            },
-            "BBA": {
-                "content": "Bachelor of Business Administration content",
-                "image": "/static/images/bba.jpg"
-            },
-            "Data Analytics": {
-                "content": "Data Analytics content",
-                "image": "/static/images/DataAnalytics.jpg"
-            },
-            "BCom": {
-                "content": "Bachelor of Commerce content",
-                "image": "/static/images/bcom.jpg"
-            },
-            "Hons(Retail Mgmt & E Comm.)": {
-                "content": "Honors in Retail Management and E-Commerce content",
-                "image": "/static/images/HonsRetailManagement.jpg"
-            },
-            "BCA": {
-                "content": "Bachelor of Computer Applications content",
-                "image": "/static/images/bca.jpg"
-            },
-            "BSC(Agri)": {
-                "content": "Bachelor of Science in Agriculture content",
-                "image": "/static/images/bsc.jpg"
-            },
-            "BCom(Hons)": {
-                "content": "Bachelor of Commerce Honors content",
-                "image": "/static/images/bcomHons.jpg"
-            }
+            
+    "B.Pharma": {
+        "content": "Pharmacy is the science and practice of preparing and dispensing medications. Pursuing a Bachelor of Pharmacy (B.Pharm) entails studying numerous elements of pharmaceuticals, such as medication composition, effects on the human body, and manufacturing procedures. If you're interested in enhancing healthcare outcomes through medicines, B.Pharm is a dynamic career path that allows you to contribute to advances in medicine and patient care, eventually making a difference in people's lives.",
+        "image": "/static/images/Bpharma.jpg"
+    },
+    "BBA": {
+        "content": "BBA, a 3-year undergraduate degree, is ideal for those interested in exploring careers in Marketing, Sales, Finance, or HR. It can be pursued full-time, through distance learning, or online, offering flexibility in learning options. Students can pursue a general BBA course to gain an overview of management and business. This gives BBA graduates a strong foundation in business and prepares them for a variety of careers in the corporate world.",
+        "image": "/static/images/bba.jpg"
+    },
+    "Data Analytics": {
+        "content": "A Bachelor of Business Administration in Business Analytics is an undergraduate program that combines business administration principles with data analysis techniques. It equips students with essential knowledge to make data-driven decisions in the corporate world. Students learn core subjects like marketing, finance, accounting, and operations management, and gain skills in statistical methods, data mining, and predictive modeling.",
+        "image": "/static/images/DataAnalytics.jpg"
+    },
+    "BCom": {
+        "content": "Bachelor of Commerce (BCom) is an undergraduate degree programme that focuses on commerce, finance, and business. Students study accounting, economics, and business management. BCom graduates are prepared for careers in finance, banking, and corporate sectors. The curriculum emphasizes practical skills, preparing students for careers as accountants, financial analysts, and business professionals in a variety of industries.",
+        "image": "/static/images/bcom.jpg"
+    },
+    "Hons(Retail Mgmt & E Comm.)": {
+        "content": "Bachelor of Commerce (BCom) in Retail Management is a specialized program that combines commerce principles with retail expertise. Students learn about retail operations, merchandising, and customer service. This program prepares graduates for careers in retail management, marketing, and sales, providing a blend of business acumen and retail-specific knowledge for success in the dynamic retail industry.",
+        "image": "/static/images/HonsRetailManagement.jpg"
+    },
+    "BCA": {
+        "content": "The Bachelor of Computer Applications (BCA) programme is a vibrant sector that combines technology and business. It covers topics such as programming, software development, database management, and more. If you're interested in computers and want to learn more about them, BCA can take you on an interesting trip through software, code, and invention. It provides you with the skills you need to succeed in today's digital landscape and opens the door to a variety of employment opportunities in the technology industry.",
+        "image": "/static/images/bca.jpg"
+    },
+    "BSC(Agri)": {
+        "content": "A BSc in Agriculture is a dynamic discipline that emphasises sustainable food production, crop management, and environmental conservation. It provides a combination of scientific knowledge and practical skills in fields such as plant breeding, soil science, pest control, and agricultural economics. If you're passionate about caring for the land, guaranteeing food security, and making a difference in the environment, a BSc in Agriculture can lead to a rewarding career in agriculture.",
+        "image": "/static/images/bsc.jpg"
+    },
+    "BCom(Hons)": {
+        "content": "Bachelor of Commerce (BCom) Honors is an advanced undergraduate programme in India that delves deeper into commerce and business topics. Students gain in-depth knowledge by focusing on areas such as accounting, finance, and marketing. The programme focuses on research, critical thinking, and analytical skills, preparing graduates for specialized positions in business, finance, and other fields.",
+        "image": "/static/images/bcomHons.jpg"
+    }
         };
 
         function loadTopRecommendedBranchContent() {

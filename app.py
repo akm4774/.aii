@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
-from model import get_recommendation
+from model2 import predict_top_unique_branches
 from pymongo import MongoClient
 from roadmaps import roadmaps
 app = Flask(__name__)
@@ -35,11 +35,12 @@ def submit_form():
     selected_interests = binterests if binterests else ""
     print(selected_interests, rank, income, course)
      # Call get_recommendation function
-    recommendations = get_recommendation(selected_interests, rank, course=course)
-
-    b1, b2, b3 = recommendations
+    recommendations = predict_top_unique_branches(selected_interests, rank, course=course)
+    b1 = recommendations[0]
+    if len(recommendations) > 1:
+        b2, b3 = recommendations[1], recommendations[2]
     session['b1'] = b1.upper()
-    return render_template('main.html', b1=b1.upper(), b2=b2.upper(), b3=b3.upper(), interest=selected_interests, crs=course)
+    return render_template('main.html', b1=b1.upper(), b2=b2.upper() if b2 else None, b3=b3.upper() if b3 else None, interest=selected_interests, crs=course)
  
 @app.route('/roadmap')
 def roadmap():
@@ -105,7 +106,7 @@ def pharmacology_page():
 def technology_page():
     return render_template('course_interests/technology.html')
 
-#if __name__ == '__main__':
-    #app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
