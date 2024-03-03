@@ -13,7 +13,7 @@
   }
 .container11 ul{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%; 
 }
 ul.ks-cboxtags {
@@ -83,10 +83,20 @@ ul.ks-cboxtags li input[type="checkbox"] {
 ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   border: 2px solid #e9a1ff;
 }
-@media screen and (max-width:672px){
+@media screen and (max-width:800px){
   .container11 ul{
-    grid-template-columns: 1fr 1fr;
-
+    grid-template-columns: 1fr 1fr 1fr;
+    
+  }
+}
+@media screen and (max-width:500px) {
+  .container11 ul{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media screen and (max-width:420px) {
+  .container11 ul{
+    grid-template-columns:1fr 1fr;
   }
 }
 </style>
@@ -104,19 +114,19 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
                   <li><input type="checkbox" name="interest" id="checkboxTwo" value="Research"><label for="checkboxTwo"> Research</label></li>
                   <li><input type="checkbox" name="interest" id="checkboxThree" value="Programming"><label for="checkboxThree"> Programming</label></li> 
                   <li><input type="checkbox" name="interest" id="checkboxFour" value="Problem Solving"><label for="checkboxFour"> Problem Solving</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxFive" value="Home Automation"><label for="checkboxFive"> Home Automation</label></li>
                   <li><input type="checkbox" name="interest" id="checkboxSix" value="Gaming"><label for="checkboxSix"> Gaming</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxFive" value="Home Automation"><label for="checkboxFive"> Home Automation</label></li>
                   <li><input type="checkbox" name="interest" id="checkboxSeven" value="Networking"><label for="checkboxSeven"> Networking</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxEight" value="Cryptography"><label for="checkboxEight"> Cryptography</label></li> 
                   <li><input type="checkbox" name="interest" id="checkboxNine" value="Machine Learning"><label for="checkboxNine"> Machine Learning</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxEight" value="Cryptography"><label for="checkboxEight"> Cryptography</label></li> 
                   <li><input type="checkbox" name="interest" id="checkboxTen" value="Artificial Intelligence"><label for="checkboxTen"> Artificial Intelligence</label></li>
                   <li><input type="checkbox" name="interest" id="checkboxEleven" value="Design"><label for="checkboxEleven"> Design</label></li>
                   <li><input type="checkbox" name="interest" id="checkboxTwelve" value="Technology"><label for="checkboxTwelve"> Technology</label></li>
                   <li><input type="checkbox" name="interest" id="checkboxThirteen" value="Construction"><label for="checkboxThirteen"> Construction</label></li> 
                   <li><input type="checkbox" name="interest" id="checkboxFourteen" value="Ethical Hacking"><label for="checkboxFourteen"> Ethical Hacking</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxFifteen" value="Embedded System & Iot"><label for="checkboxFifteen"> Embedded System & Iot</label></li>
-
+                  
                   <li><input type="checkbox" name="interest" id="checkboxSixteen" value="Robotics"><label for="checkboxSixteen"> Robotics</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxFifteen" value="Embedded System & Iot"><label for="checkboxFifteen"> Embedded System & Iot</label></li>
                   <li><input type="checkbox" name="interest" id="checkboxSeventeen" value="Automobiles"><label for="checkboxSeventeen"> Automobiles</label></li>
                   <li><input type="checkbox" name="interest" id="checkboxEighteen" value="Simulation"><label for="checkboxEighteen"> Simulation</label></li>
                   <li><input type="checkbox" name="interest" id="checkboxNineteen" value="Power System"><label for="checkboxNineteen"> Power System</label></li> 

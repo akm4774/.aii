@@ -129,7 +129,7 @@ input::-webkit-inner-spin-button {
 
 .interest-container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 @media screen and (max-width: 652px) {
     .grid-container {
@@ -150,7 +150,7 @@ input::-webkit-inner-spin-button {
 
     .row1 {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr; /* Adjust column sizes */
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     .form-control-lg {
@@ -167,4 +167,70 @@ input::-webkit-inner-spin-button {
         padding: 5px 10px;
     }
 }
-
+@media screen and (min-width:1200px)
+{
+    #frame_agri iframe{
+        height: 160px;
+    }
+    #frame_pharma iframe{
+        height: 160px;
+    }
+    #frame_computer iframe{
+        height: 210px;
+    }
+    #frame_finance iframe{
+        height: 230px;
+    }
+    #frame_admin iframe{
+        height: 200px;
+    }
+    #frame_tech iframe{
+        height: 430px;
+    }
+}
+@media screen and (max-width:1200px)
+{
+    #frame_agri iframe{
+        height: 310px;
+    }
+    #frame_pharma iframe{
+        height: 240px;
+    }
+    #frame_computer iframe{
+        height: 340px;
+    }
+    #frame_finance iframe{
+        height: 380px;
+    }
+    #frame_admin iframe{
+        height: 300px;
+    }
+    #frame_tech iframe{
+        height: 520px;
+    }
+}
+@media screen and (max-width:800px) {
+    #frame_tech iframe{
+        height: 780px;
+    }
+}
+@media screen and (max-width:600px) {
+    #frame_agri iframe{
+        height: 330px;
+    }
+    #frame_pharma iframe{
+        height: 170px;
+    }
+    #frame_computer iframe{
+        height: 580px;
+    }
+    #frame_finance iframe{
+        height: 630px;
+    }
+    #frame_admin iframe{
+        height: 300px;
+    }
+    #frame_tech iframe{
+        height: 125vh;
+    }
+  }

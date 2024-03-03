@@ -117,4 +117,5 @@ const roadmaps = {
     }
 };
 
-export default roadmaps;
+// export default roadmaps;
+window.roadmaps = roadmaps;
