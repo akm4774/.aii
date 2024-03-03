@@ -13,7 +13,7 @@
   }
 .container11 ul{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%; 
 }
 ul.ks-cboxtags {
@@ -80,11 +80,17 @@ ul.ks-cboxtags li input[type="checkbox"] {
 ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   border: 2px solid #e9a1ff;
 }
-@media screen and (max-width:672px){
+@media screen and (max-width:800px){
   .container11 ul{
     grid-template-columns: 1fr 1fr;
-
+    
   }
+}
+@media screen and (max-width:572px) {
+  .container11 ul{
+    grid-template-columns: 1fr;
+  }
+  
 }
 </style>
 </head>
@@ -93,19 +99,20 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     <div>
       <p class="font-weight-bold">Please Select min 3 and max 5 options</p>
     </div>
-    <div>
+   
       <form action="/" method="get" id="form" >
                 <ul class="ks-cboxtags" >
                   <li><input type="checkbox" name="interest" id="checkboxOne" value="Botany"><label for="checkboxOne"> Botany</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxTwo" value="Research"><label for="checkboxTwo"> Research</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxThree" value="Environment"><label for="checkboxThree"> Environment</label></li>
                   <li><input type="checkbox" name="interest" id="checkboxFour" value="Sustainability"><label for="checkboxFour"> Sustainability</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxTwo" value="Research"><label for="checkboxTwo"> Research</label></li>            
                   <li><input type="checkbox" name="interest" id="checkboxFive" value="Crop Production"><label for="checkboxFive"> Crop Production</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxThree" value="Environment"><label for="checkboxThree"> Environment</label></li>
                   
                 </ul> 
               </div>
               <div id="error-message" style="display: none; color: red;">Please select only five options.</div>
             </form>
+            <div>
             <script>
               // Get all checkboxes
               var checkboxes = document.querySelectorAll('input[name="interest"]');

@@ -2,108 +2,165 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Branch Content Recommendation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <style>
-        body{
-            background-color: skyblue;
-        }
-        #content-container {
-            max-width: 80vw;
-            margin: 50px auto;
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow-x: hidden; /* Prevent horizontal overflow */
-        }
+        body {
+    background-color: #f4f4f4;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
 
-        h1 {
-            margin: 0;
-            padding: 0 20px;
-            color: #4285f4;
-            border-bottom: 2px solid #4285f4;
-            margin-bottom: 20px;
-        }
+#content-container {
+    max-width: 80vw;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*overflow-x: hidden; */
+}
 
-        .line {
-            border-top: 1px solid #ddd;
-            margin-bottom: 20px;
-        }
+h1 {
+    margin: 0;
+    padding: 0 20px;
+    color: #4285f4;
+    border-bottom: 2px solid #4285f4;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-        .subtitle p {
-            color: #777;
-            margin-bottom: 10px;
-        }
+.subtitle {
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-        .print-icon {
+.subtitle p {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.box-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.interest-preferences,
+.course {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.interest-preferences p,
+.course p {
+    margin: 5px 0;
+}
+
+.box-container p {
+    flex: 1;
+    text-align: center;
+}
+img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+.content {
+    display: grid;
+    grid-template-columns:.4fr 1fr;
+    grid-gap: 20px;
+}
+
+.content-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.print-icon {
             position: absolute;
             top: 20px;
             right: 20px;
             cursor: pointer;
             font-size: 24px;
-        }
-
-        .tooltip {
-            position: absolute;
-            top: 40px;
-            right: 50px;
-            background-color: #333;
             color: #fff;
-            padding: 5px 10px;
-            border-radius: 10px;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
-        .print-icon:hover + .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
+.print-icon:hover {
+    background-color: #0d6efd;
+}
 
-        .content {
-            display: grid;
-            grid-template-columns: 1fr .4fr;
-            grid-gap: 20px;
-        }
+.tooltip {
+    position: absolute;
+    top: 50px;
+    /* right: -60px; */
+    right: 10px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-        .content-item {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+.print-icon:hover + .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media screen and (max-width:772px) {
+    .content{
+        display: block;
+    }
+}
     </style>
-
 </head>
-
 <body>
     <div id="content-container">
-        <h1 style="padding:0 20px; text-align: center;">Branch Content Recommendation</h1>
-        <!--<div class="line"></div>-->
+        <h1>Branch Content Recommendation</h1>
 
         <div class="subtitle">
-            <p><strong>Based on your interest preferences:</strong> {{ interest }}</p>
-            <p><strong>Your eligible course:</strong> {{ crs }}</p>
+            <div class="box-container">
+                <div class="interest-preferences">
+                    <p><strong>Interest Preferences:</strong></p>
+                    <p>{{ interest }}</p>
+                </div>
+                <div class="course">
+                    <p><strong>Course:</strong></p>
+                    <p>{{ crs }}</p>
+                </div>
+            </div>
             <p><strong>Our model recommends you this branch:</strong></p>
+            <h2><strong>{{ b1 }}</strong></h2>
         </div>
+        
 
-        <div id="heading"></div>
         <div class="content">
-            <div id="branch-content" class="content-item"></div>
             <div id="branch-image" class="content-item"></div>
+            <div id="branch-content" class="content-item"></div>
         </div>
         {{ super() }}
     </div>
+
     <div class="print-icon" onclick="window.print()">
         <i class="fas fa-download print-icon"></i>
         <div class="tooltip">Download</div>
     </div>
+
 
     <script>
         var branchContent = {
@@ -124,7 +181,7 @@
                 "image": "/static/images/aids.jpg"
             },
             "EC": {
-                "content": "Electrical and communication engineering is concerned with the research and application of electrical systems and communication technologies. This field leads the way in technical innovation, from power generation and distribution to the design of wireless communication networks. If you're fascinated by how electricity powers our environment and the possibility of seamless communication, this branch takes you on a thrilling trip through innovation, connectivity, and molding the future of technology.",
+                "content": "Electrical and communication engineering is concerned with the research and application of electrical systems and communication technologies. This field leads the way in technical innovation, from power generation and distribution to the design of wireless communication networks. If you're fascinated by how electricity powers our environment and the possibility of seamless communication, this branch takes you on a thrilling trip through innovation, connectivity, and molding the future of technology.",
                 "image": "/static/images/ECE.jpg"
             },
             "EEE": {
@@ -148,7 +205,7 @@
                 "image": "/static/images/cy.jpg"
             },
             "CSEDS": {
-                "content": "The B.Tech (CSE) - Data Science & Analytics program, focuses on interdisciplinary data science and analytics. The program combines data inference, algorithm development, and technology to solve complex problems. It imparts skills in mathematical expertise, technology hacking, and business strategy. The program focuses on using data to generate business value and make smarter decisions.",
+                "content": "The B.Tech (CSE) - Data Science & Analytics program, focuses on interdisciplinary data science and analytics. The program combines data inference, algorithm development, and technology to solve complex problems. It imparts skills in mathematical expertise, technology hacking, and business strategy. The program focuses on using data to generate business value and make smarter decisions.",
                 "image": "/static/images/DS.jpg"
             },
             
@@ -180,6 +237,10 @@
         "content": "A BSc in Agriculture is a dynamic discipline that emphasises sustainable food production, crop management, and environmental conservation. It provides a combination of scientific knowledge and practical skills in fields such as plant breeding, soil science, pest control, and agricultural economics. If you're passionate about caring for the land, guaranteeing food security, and making a difference in the environment, a BSc in Agriculture can lead to a rewarding career in agriculture.",
         "image": "/static/images/bsc.jpg"
     },
+    "AGRICULTURE": {
+        "content": "A BSc in Agriculture is a dynamic discipline that emphasises sustainable food production, crop management, and environmental conservation. It provides a combination of scientific knowledge and practical skills in fields such as plant breeding, soil science, pest control, and agricultural economics. If you're passionate about caring for the land, guaranteeing food security, and making a difference in the environment, a BSc in Agriculture can lead to a rewarding career in agriculture.",
+        "image": "/static/images/bsc.jpg"
+    },
     "BCom(Hons)": {
         "content": "Bachelor of Commerce (BCom) Honors is an advanced undergraduate programme in India that delves deeper into commerce and business topics. Students gain in-depth knowledge by focusing on areas such as accounting, finance, and marketing. The programme focuses on research, critical thinking, and analytical skills, preparing graduates for specialized positions in business, finance, and other fields.",
         "image": "/static/images/bcomHons.jpg"
@@ -189,15 +250,12 @@
         function loadTopRecommendedBranchContent() {
             var contentDiv = document.getElementById('branch-content');
             var imageDiv = document.getElementById('branch-image');
-            var heading = document.getElementById('heading')
             var topRecommendedBranch = "{{ b1 }}"; 
 
             if (branchContent.hasOwnProperty(topRecommendedBranch)) {
                 var branchData = branchContent[topRecommendedBranch];
 
-                // Insert branch content
-                heading.innerHTML = `<h2>${topRecommendedBranch}</h2>`
-                contentDiv.innerHTML = `<p>${branchData.content}</p>`;
+                contentDiv.innerHTML =` <p>${branchData.content}</p>`;
 
                 // Insert branch image if available
                 if (branchData.image) {
