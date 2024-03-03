@@ -6,11 +6,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Shikher Kumar</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
-  <link rel="manifest" href="./images/site.webmanifest">
   <link rel='stylesheet' href='https://rawcdn.githack.com/SochavaAG/example-mycode/master/_common/css/reset.css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
   <link rel="stylesheet" href="/static/roadmap.css">
@@ -201,7 +196,7 @@
         agTimelineItem.each(function () {
           var agTop = $(this).find(agTimelinePoint).offset().top;
 
-          (agTop + agPosY - $(window).scrollTop()) < agPosY + .5 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
+          (agTop + agPosY - $(window).scrollTop()) < agPosY + .6 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
         })
       }
 

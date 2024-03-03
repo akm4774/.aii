@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from model2 import predict_top_unique_branches
 from pymongo import MongoClient
 from roadmaps import roadmaps
+import numpy as np
 app = Flask(__name__)
 app.secret_key = 'secret_key'  # Set a secret key for session management
 # mongo = PyMongo(app)
@@ -22,6 +23,8 @@ def submit_form():
     print(selected_interests, rank, income, course)
      # Call get_recommendation function
     recommendations = predict_top_unique_branches(selected_interests, rank, course=course)
+    recommendations = np.array(recommendations)
+    recommendations = recommendations.tolist()
     print(recommendations)
     b1 = "None"
     if len(recommendations) == 3:
