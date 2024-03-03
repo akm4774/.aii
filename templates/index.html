@@ -119,7 +119,7 @@
                   <div class="col-md-6">
                     <div class="form-outline">
                       <label class="form-label select-label font-weight-bold" for="12th_branch">12th Branch</label>
-                      <select class="form-control-lg form-control" id="12th_branch" name="branch_12" onclick="change()">
+                      <select class="form-control-lg form-control" id="12th_branch" name="branch_12" onclick="change()" onchange="handleRadioVisibility()">
                         <option value="" disabled selected>Select an option</option>
                         <option value="PCM" >PCM</option>
                         <option value="PCB">PCB</option>
@@ -152,9 +152,8 @@
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="administration" name="interests"
                           value="administration" onclick="toggleButton()">
-                        <label for="administration">Administration </label>
+                        <label for="administration" >Administration </label>
                       </div>
-                      <div></div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="finance-accounting" name="interests"
                           value="finance-accounting" onclick="toggleButton()">
@@ -184,49 +183,49 @@
                     <div style="margin-bottom: 20px;">
 
                       <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                          <label for="prev" class="font-weight-bold">Change interests</label>
+                          <label for="prev" class="font-weight-bold">Change Course</label>
                     </div>
-                    <iframe src="/technology" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                    <iframe src="/technology" frameborder="1" id="frame-technology" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin:50px 0;" id="frame_admin">
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                        <label for="prev" class="font-weight-bold">Change interests</label>
-                    <iframe src="/administration" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                        <label for="prev" class="font-weight-bold">Change Course</label>
+                    <iframe src="/administration" frameborder="1" id="frame-administration" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin:50px 0;" id="frame_finance">
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                        <label for="prev" class="font-weight-bold">Change interests</label>
-                    <iframe src="/finance" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                        <label for="prev" class="font-weight-bold">Change Course</label>
+                    <iframe src="/finance" frameborder="1" id="frame-finance-accounting" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin:50px 0;" id="frame_computer">
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                        <label for="prev" class="font-weight-bold">Change interests</label>
-                    <iframe src="/computer_app" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                        <label for="prev" class="font-weight-bold">Change Course</label>
+                    <iframe src="/computer_app" frameborder="1" id="frame-computer-application" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin:50px 0;" id="frame_pharma">
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                        <label for="prev" class="font-weight-bold">Change interests</label>
-                    <iframe src="/pharmacology" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                        <label for="prev" class="font-weight-bold">Change Course</label>
+                    <iframe src="/pharmacology" frameborder="1" id="frame-pharmacology" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin:50px 0;" id="frame_agri">
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                        <label for="prev" class="font-weight-bold">Change interests</label>
-                    <iframe src="/agriculture" frameborder="1" id="frame" height="450px" width="100%"></iframe>
+                        <label for="prev" class="font-weight-bold">Change Course</label>
+                    <iframe src="/agriculture" frameborder="1" id="frame-agriculture" height="450px" width="100%"></iframe>
 
                   </div>
                 </div>
@@ -236,10 +235,10 @@
                   aligned with your goals.</label>
                 <br>
 
-                <div class="mt-4-pt-2" style="text-align: center;">
-                  <input class="btn btn-primary btn-lg"  type="submit" value="Submit" />
+                <div class="mt-4-pt-2">
+                  <input class="btn-btn-primary-btn-lg"  type="submit" value="Submit" />
                 </div>
-            <input type="hidden" id="selected-interests" name="selected_interests" value="">
+            <input type="hidden" id="selected-interests" name="selected_interests" value="selected_interests">
               </form>
             </div>
           </div>
@@ -250,9 +249,21 @@
   <script>
     document.getElementById("form").addEventListener("submit", function (event) {
         event.preventDefault();
-        var iframe = document.getElementById("frame");
+        // Get the ID of the selected radio button
+        var crs = document.querySelector('input[name="interests"]:checked').id;
+
+        // Construct the iframe ID based on the selected radio button's ID
+        var iframeID = "frame-" + crs;
+
+        // Get the iframe using the constructed ID
+        var iframe = document.getElementById(iframeID);
         var iframeDocument = iframe.contentWindow.document;
         var selectedCheckboxes = iframeDocument.querySelectorAll('input[name="interest"]:checked');
+        // Check if less than three checkboxes are selected
+        if (selectedCheckboxes.length < 3) {
+            alert("Please select at least three interests.");
+            return; // Prevent form submission
+        }
         var selectedInterests = [];
         selectedCheckboxes.forEach(function (checkbox) {
             selectedInterests.push(checkbox.value);
@@ -315,35 +326,45 @@
 
     // Function to handle visibility of radio buttons based on 12th percentage
     function handleRadioVisibility() {
+    var branch_12 = document.getElementById("12th_branch").value;
     var per_12 = parseFloat(document.getElementById("12th_marks").value);
 
     // Get all radio buttons
     var radioButtons = document.querySelectorAll('input[name="interests"]');
 
-    if (per_12 >= 60) {
-        // Display all radio buttons
-        radioButtons.forEach(function(radio) {
-            radio.style.display = "inline";
-        });
+    // Show all radio buttons by default
+    radioButtons.forEach(function(radio) {
+        radio.style.display = "inline";
+    });
+
+    // Adjust visibility based on branch_12 and per_12
+    if (per_12 >= 50) {
+        if (branch_12 === "PCM") {
+            // Hide Pharmacology and make other radio buttons inline
+            document.getElementById("pharmacology").style.display = "none";
+        } else if (branch_12 === "PCB") {
+            // Hide Computer Application and make other radio buttons inline
+            document.getElementById("computer-application").style.display = "none";
+            document.getElementById("technology").style.display = "none";
+        } else if (branch_12 === "Commerce") {
+            // Hide Technology and Pharmacology, make other radio buttons inline
+            document.getElementById("technology").style.display = "none";
+            document.getElementById("pharmacology").style.display = "none";
+        } else if (branch_12 === "Arts") {
+            // Hide Technology, Administration, Pharmacology, make other radio buttons inline
+            document.getElementById("technology").style.display = "none";
+            document.getElementById("administration").style.display = "none";
+            document.getElementById("pharmacology").style.display = "none";
+        }
     } else if (per_12 >= 50 && per_12 < 60) {
         // Hide BCA and make other radio buttons inline
         document.getElementById("computer-application").style.display = "none";
-        radioButtons.forEach(function(radio) {
-            if (radio.id !== "computer-application") {
-                radio.style.display = "inline";
-            }
-        });
+        
     } else if (per_12 >= 45 && per_12 < 50) {
-        // Hide BBA, BCA, Bsc, B.Com and make other radio buttons inline
-        document.getElementById("technology").style.display = "none";
+        // Hide BBA, Technology, Pharmacology, make other radio buttons inline
         document.getElementById("administration").style.display = "none";
-        document.getElementById("finance-accounting").style.display = "none";
-        document.getElementById("computer-application").style.display = "none";
-        radioButtons.forEach(function(radio) {
-            if (radio.id !== "technology" && radio.id !== "administration" && radio.id !== "finance-accounting" && radio.id !== "computer-application") {
-                radio.style.display = "inline";
-            }
-        });
+        document.getElementById("technology").style.display = "none";
+        document.getElementById("pharmacology").style.display = "none";
     } else {
         // Hide all radio buttons and display message
         radioButtons.forEach(function(radio) {

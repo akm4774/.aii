@@ -96,16 +96,16 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     <div>
       <form action="/" method="get" id="form" >
                 <ul class="ks-cboxtags" >
-                  <li><input type="checkbox" name="interest" id="checkboxOne" value="Technology"><label for="checkboxOne">Technology</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxTwo" value="CComputers"><label for="checkboxTwo">Computers</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxThree" value="Software Development"><label for="checkboxThree">Software Development</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxFour" value="IT Industry"><label for="checkboxFour">IT Industry</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxFive" value="Coding"><label for="checkboxFive">Coding</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxSix" value="Neural Networks"><label for="checkboxSix">Neural Networks</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxSeven" value="Deep Learning"><label for="checkboxSeven">Deep Learning</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxEight" value="Machine Learning Models"><label for="checkboxEight">Machine Learning Models</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxNine" value="Image Recognition"><label for="checkboxNine">Image Recognition</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxTen" value="NLP"><label for="checkboxTen">NLP</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxOne" value="Data"><label for="checkboxOne"> Data</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxTwo" value="Analytics"><label for="checkboxTwo"> Analytics</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxThree" value="Technology"><label for="checkboxThree"> Technology</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxFour" value="Mathematics"><label for="checkboxFour"> Mathematics</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxFive" value="Problem Solving"><label for="checkboxFive"> Problem Solving</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxSix" value="Analysis"><label for="checkboxSix"> Analysis</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxSeven" value="Research"><label for="checkboxSeven"> Research</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxEight" value="Management"><label for="checkboxEight"> Management</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxNine" value="Programming"><label for="checkboxNine"> Programming</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxTen" value="Artificial Intelligence"><label for="checkboxTen"> Artificial Intelligence</label></li>
                  
                 </ul>  
               
@@ -113,19 +113,30 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 
               <div id="error-message" style="display: none; color: red;">Please select only five options.</div>
             </form>
-    <script>
-        document.getElementById("form").addEventListener("submit", function (event) {
-        var selectedCheckboxes = document.querySelectorAll('input[name="interest"]:checked');
-        console.log(selectedCheckboxes)
-        if (selectedCheckboxes.length>=3 && selectedCheckboxes.length <= 5) {
-          console.log("submitted")
-          document.getElementById("error-message").style.display = "none";
-        }
-        else {
-          event.preventDefault(); 
-          document.getElementById("error-message").style.display = "block";
-          }
-      });
-    </script>
+            <script>
+              // Get all checkboxes
+              var checkboxes = document.querySelectorAll('input[name="interest"]');
+              // Initialize counter for selected checkboxes
+              var selectedCount = 0;
+          
+              // Add event listener to each checkbox
+              checkboxes.forEach(function (checkbox) {
+                  checkbox.addEventListener('change', function () {
+                      // If checkbox is checked and count is less than or equal to 5
+                      if (this.checked && selectedCount < 5) {
+                          // Increment the selected count
+                          selectedCount++;
+                      } else if (!this.checked) {
+                          // If checkbox is unchecked, decrement the selected count
+                          selectedCount--;
+                      } else {
+                          // If count is already 5, prevent checking the checkbox
+                          this.checked = false;
+                          // Display alert
+                          alert("You can only select up to 5 checkboxes.");
+                      }
+                  });
+              });
+          </script>
 </body>
 </html>

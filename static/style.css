@@ -9,19 +9,22 @@ iframe{
     background-color: rgb(173, 221, 240);
     
 }
-.py-5{
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
-}
+
 .card-registration .select-arrow {
     top: 13px;
 }
 .label{
-    font-family: "Roboto Slab";
-    font-size: 13px;
+    font-family:Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
 }
-.pt-2{
+/* .pt-2{
+     text-align: center; 
+}*/  
+h1{
     text-align: center;
+    margin: top 20px;
+    text-decoration: underline;
 }
 .select{
     height: 50px;
@@ -32,6 +35,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
   text-align: center;
+ 
 }
 #higher_12{
     display: none;
@@ -48,6 +52,7 @@ input::-webkit-inner-spin-button {
     grid-template-columns: auto auto auto;
     padding:5px 10px;
   }
+
 @media screen and (max-width:652px) {
     .grid-container{
         grid-template-columns: 1fr 1fr 1.2fr;
@@ -71,10 +76,29 @@ input::-webkit-inner-spin-button {
     font-size: small;
  }
 
-.mt-4-pt-2{
-    margin: auto;
+ .mt-4-pt-2{
     text-align: center;
+    color:rgb(1, 1, 34);
+    margin-top: 20px; /* Add margin-top here */
 }
+
+
+.btn-btn-primary-btn-lg {
+    background-color: rgb(102, 209, 252);
+    height: 40px;
+    width: 90px;
+    border-radius: 14px;
+    font-size: larger;
+    border: 0px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-btn-primary-btn-lg:hover {
+    background-color: rgb(55, 193, 248);
+}
+
+
+
 @media (min-width: 1200px )
 {
     .col-xl-7 {
@@ -92,11 +116,7 @@ input::-webkit-inner-spin-button {
     .col-md-6{
         width: 100%;
     }
-    .grid-container {
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        padding:5px 10px;
-      }
+
 }
 @media (min-width: 768px)
 {
@@ -111,3 +131,40 @@ input::-webkit-inner-spin-button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
+@media screen and (max-width: 652px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr 1.2fr; /* Adjust column sizes */
+        padding: 0;
+    }
+
+    .grid-item label {
+        font-size: 12px;
+    }
+}
+@media (min-width: 1200px) {
+    .col-xl-7 {
+        -ms-flex: 0 0 58.333333%;
+        flex: 0 0 100%;
+        max-width: 90%; /* Adjust max-width as needed */
+    }
+
+    .row1 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; /* Adjust column sizes */
+    }
+
+    .form-control-lg {
+        width: 250px; /* Adjust width as needed */
+    }
+
+    .col-md-6 {
+        width: 100%;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto; /* Adjust column sizes */
+        padding: 5px 10px;
+    }
+}
+

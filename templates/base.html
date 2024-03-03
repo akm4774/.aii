@@ -6,180 +6,230 @@
     <title>{% block title %}Course Navigator.Ai{% endblock %}</title>
     <style>
         body {
-           
-   margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: rgb(139,243,255);
-background: linear-gradient(348deg, rgba(139,243,255,1) 0%, rgba(152,148,214,1) 62%, rgba(33,185,217,1) 83%);
-      }
-      .sticky-button {
-          position: fixed;
-          top: 40px;
-          right: 20px;
-          z-index: 999;
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          padding: 10px 20px;
-          cursor: pointer;
-          border-radius: 5px;
-      }
-      #iframe-container {
-          top: 0;
-          right: 10;
-          width: 40%;
-          height: 100%;
-          box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
-          z-index: 1000;
-          display: none;  
-      }
-      .container {
-          margin: 0%;
-          padding: 0%;   
-      }
-      #iframe-container iframe {
-          width: 100%;
-          height: 100%;
-          border: none;
-          padding-left: 20%;
-          background-color: transparent;
-      }
-      .navbar {
-    height: 7rem;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgb(33,185,217);
-background: linear-gradient(344deg, rgba(33,185,217,1) 7%, rgba(152,148,214,1) 53%, rgba(139,243,255,1) 95%);
-    color: #fff;
-    font-weight: 500;
-    padding: 0 2rem; /* Add some padding for better spacing */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-}
-
-.logo img {
-    height: 3rem; /* Adjusted logo height */
-    width: auto; /* Let the width adjust according to the height */
-}
-
-
-      .footer {
-        background: rgb(33,185,217);
-background: linear-gradient(344deg, rgba(33,185,217,1) 7%, rgba(152,148,214,1) 53%, rgba(139,243,255,1) 95%);
-          
-          text-align: center;
-  padding: 20px;
-          width: auto;
-          
-          z-index: 1000;
-      }
-      .graph-iframe {   
-          width: 100%;
-          height: calc(100vh - 15rem); 
-          margin-bottom: 0;
-          padding: 5px; 
-          box-sizing: border-box; 
-      }  
-      .footer-sec {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          margin-top: 10px;
-          align-items: center;
-      }
-      .f-logo img {
-        background-color:transparent;  
-        height: 3rem;
-
-      }
-  
-      .links {
-          display: flex;
-      }
-      .socialmedia img {
-          filter: invert(1);
-          height: 25px;
-          width: auto;
-      }
-      .socialmedia {
-          border-radius: 25px;
-          height: 45px;
-          width: 45px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-right: 10px;
-      }
-      .facebook {
-          background-color: #3B5998;
-      }
-      .youtube {
-          background-color: #CD201F;
-      }
-      .instagram {
-          background-color: #262626;
-      }
-      .copyright {
-          margin-top: 20px;
-          color: #fcfcfc;
-          text-align: center;
-      }
-      .heading h1{
-        font-size: 3.0rem;
-      }
-      .heading{
-        margin: auto;
-      }
-      @media screen and (max-width:600px)
-      {
-        .heading p{
-            font-size: 20px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            overflow-x: hidden;
+            flex-direction: column;
+            min-height: 100vh;
+            background: rgb(139, 243, 255);
+            background: linear-gradient(348deg, rgba(139, 243, 255, 1) 0%, rgba(152, 148, 214, 1) 62%, rgba(33, 185, 217, 1) 83%);
         }
-      }
-    .disclaimer {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-    .disclaimer p {
-        font-size: 18px;
-        line-height: 1.5;
-        color: #333;
-        margin: 0;
-    }
-    .disclaimer h2 {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 2px;
-    }
-    .further-recommendations {
-        padding:20px 0;
-    }
-    .further-recommendations h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-    .further-recommendations p {
-        font-size: 18px;
-        line-height: 1.5;
-        color: #333;
-        margin-bottom: 10px;
-    }
-    .further-recommendations ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .further-recommendations li {
-        font-size: 18px;
-        margin-bottom: 5px;
-    }   
-  </style>
+    
+        .sticky-button {
+            position: fixed;
+            top: 40px;
+            right: 20px;
+            z-index: 999;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        #iframe-container {
+            top: 0;
+            right: 10;
+            width: 40%;
+            height: 100%;
+            box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+        }
+    
+        .container {
+            margin: 0%;
+            padding: 0%;
+        }
+    
+        #iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            padding-left: 20%;
+            background-color: transparent;
+        }
+    
+        .navbar {
+            height: 7rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgb(33, 185, 217);
+            background: linear-gradient(344deg, rgba(33, 185, 217, 1) 7%, rgba(152, 148, 214, 1) 53%, rgba(139, 243, 255, 1) 95%);
+            color: #fff;
+            font-weight: 500;
+            padding: 0 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            justify-content: space-between; 
+        }
+    
+        .logo img {
+            height: 3rem;
+            width: auto;
+            display: block; /* Ensure the logo is centered */
+            margin: 0 auto; /* Center the logo */
+        }
+    
+        .heading h1 {
+            font-size: 2.5rem;
+            font-family: 'Times New Roman', Times, serif;
+            margin-right: 50px;
+            color: white;
+        }
+        @media screen and (max-width: 768px) {
+            .heading h1 {
+            font-size: 2.0rem; /* Adjust font size for smaller screens */
+            }
+        }
+        .footer {
+            background: rgb(33, 185, 217);
+            background: linear-gradient(344deg, rgba(33, 185, 217, 1) 7%, rgba(152, 148, 214, 1) 53%, rgba(139, 243, 255, 1) 95%);
+            text-align: center;
+            padding: 20px;
+            width: auto;
+            z-index: 1000;
+            font-family: 'Arial', sans-serif;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .graph-iframe {
+            width: 100%;
+            height: calc(100vh - 15rem);
+            margin-bottom: 0;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+    
+        .footer-sec {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            align-items: center;
+        }
+    
+        .f-logo img {
+            background-color: transparent;
+            height: 3rem;
+            width: auto;
+        }
+    
+        .links {
+            display: flex;
+        }
+    
+        .socialmedia img {
+            filter: invert(1);
+            height: 25px;
+            width: auto;
+            max-width: 100%;
+        }
+    
+        .socialmedia {
+            border-radius: 25px;
+            height: 45px;
+            width: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .facebook {
+            background-color: #3B5998;
+        }
+    
+        .youtube {
+            background-color: #CD201F;
+        }
+    
+        .instagram {
+            background-color: #262626;
+        }
+    
+        .copyright {
+            margin-top: 20px;
+            color: #fcfcfc;
+            text-align: center;
+            font-size: 14px;
+        }
+        @media screen and (max-width: 768px) {
+            .copyright {
+            font-size: 12px; /* Adjust font size for smaller screens */
+        }
+}
+        .heading h1 {
+            font-size: 3.0rem;
+        }
+    
+        .heading {
+            margin: auto;
+        }
+    
+        @media screen and (max-width: 600px) {
+            .heading p {
+                font-size: 20px;
+            }
+        }
+    
+        .disclaimer {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    
+        .disclaimer p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #333;
+            margin: 0;
+        }
+    
+        .disclaimer h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+    
+        .further-recommendations {
+            padding: 20px 0;
+        }
+    
+        .further-recommendations h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    
+        .further-recommendations p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 10px;
+        }
+    
+        .further-recommendations ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    
+        .further-recommendations li {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
+    
+    
 </head>
 <body>
     <nav class="navbar">
@@ -224,7 +274,7 @@ background: linear-gradient(344deg, rgba(33,185,217,1) 7%, rgba(152,148,214,1) 5
     <footer class="footer">
         <div class="footer-sec">
             <div class="f-logo">
-                <img src="https://lnct.ac.in/wp-content/uploads/2021/04/lnct-logo-footer-300x106-1.png" alt="logo">
+                <img src="https://www.admissionindia.net/uploads/colleges/31/logo.png" alt="logo">
             </div>
             <div class="links">
                 <a class="facebook socialmedia" href="https://www.facebook.com/LNCTGroupOfCollege" target="_blank">
