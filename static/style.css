@@ -213,6 +213,9 @@ input::-webkit-inner-spin-button {
     #frame_tech iframe{
         height: 780px;
     }
+    #frame_finance iframe{
+        height: 630px;
+    }
 }
 @media screen and (max-width:600px) {
     #frame_agri iframe{
@@ -225,7 +228,7 @@ input::-webkit-inner-spin-button {
         height: 580px;
     }
     #frame_finance iframe{
-        height: 630px;
+        height: 430px;
     }
     #frame_admin iframe{
         height: 300px;

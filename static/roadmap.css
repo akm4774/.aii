@@ -74,7 +74,6 @@ body {
     background-size: cover;
     -webkit-background-clip: text;
     background-clip: text;
-    /* text-fill-color: transparent; */
     color: transparent;
 
     font-size: 80px;
@@ -333,9 +332,6 @@ body {
       left: 0;
     }
 
-    /* .ag-timeline-card_title {
-      display: block;
-    } */
 
     .ag-timeline-card_arrow {
       margin-top: 12px;
@@ -357,7 +353,6 @@ background-color: #0d6efd;
 .tooltip {
 position: absolute;
 top: 50px;
-/* right: -60px; */
 right: 10px;
 font-size: 16px;
 background-color: #333;
@@ -412,5 +407,3 @@ opacity: 1;
     .ag-format-container {
       width: 960px;
     }
-
-  }
