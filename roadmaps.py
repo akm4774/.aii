@@ -73,7 +73,7 @@ roadmaps = {
         "yr3": "Explore advanced topics like deep learning and big data analytics. Work on projects involving real-world datasets and data visualization. Consider participating in data science competitions or hackathons.",
         "yr4": "Stay updated on emerging technologies in data science and engineering. Develop expertise in a specific domain, such as artificial intelligence or data engineering. Build a portfolio showcasing your projects. Consider pursuing advanced studies or certifications."
     },
-    "B.Pharma": {
+    "B.PHARMA": {
         "yr1": "Build a strong foundation in pharmaceutical sciences. Learn about pharmacology, medicinal chemistry, and pharmaceutics. Gain practical experience in laboratory techniques. Explore online resources and tutorials.",
         "yr2": "Dive into pharmaceutical analysis and pharmacokinetics. Understand drug formulation and quality control. Work on small projects to apply your knowledge. Join relevant pharmacy communities and forums.",
         "yr3": "Explore advanced topics like clinical pharmacy and drug regulatory affairs. Gain practical experience through internships in pharmaceutical companies or hospitals. Consider participating in research projects.",
@@ -87,7 +87,7 @@ roadmaps = {
         "yr4": "Stay updated on emerging trends and technologies in business administration. Develop expertise in a specific domain, such as digital marketing or operations management. Build a portfolio showcasing your projects and achievements. Consider pursuing an MBA or professional certifications."
     },
 
-    "Data Analytics": {
+    " BBA-data analytics": {
         "yr1": "Build a strong foundation in data analytics fundamentals. Learn about statistics, data wrangling, and data visualization. Gain proficiency in tools like Python and R. Explore online resources and tutorials.",
         "yr2": "Dive into predictive analytics and machine learning algorithms. Understand data mining techniques and regression analysis. Work on small projects to apply your knowledge. Join relevant data analytics communities and forums.",
         "yr3": "Explore advanced topics like deep learning and natural language processing. Gain practical experience through internships or research projects. Consider participating in data science competitions or hackathons.",
@@ -109,6 +109,12 @@ roadmaps = {
     },
 
     "BSC(Agri)": {
+        "yr1": "Build a strong foundation in agricultural sciences and practices. Learn about crop production, soil science, and agricultural economics. Gain practical experience through field visits and experiments. Explore online resources and tutorials.",
+        "yr2": "Dive into agricultural marketing and farm management. Understand pest management and irrigation techniques. Work on small projects to apply your agricultural knowledge. Join relevant agriculture communities and forums.",
+        "yr3": "Explore advanced topics like agricultural biotechnology and sustainable agriculture. Gain practical experience through internships or research projects. Consider participating in agricultural conferences or seminars.",
+        "yr4": "Stay updated on emerging trends and technologies in agriculture. Develop expertise in a specific domain, such as precision farming or agribusiness. Build a portfolio showcasing your agricultural projects and innovations. Consider pursuing advanced studies or certifications in agricultural sciences."
+    },
+    "AGRICULTURE": {
         "yr1": "Build a strong foundation in agricultural sciences and practices. Learn about crop production, soil science, and agricultural economics. Gain practical experience through field visits and experiments. Explore online resources and tutorials.",
         "yr2": "Dive into agricultural marketing and farm management. Understand pest management and irrigation techniques. Work on small projects to apply your agricultural knowledge. Join relevant agriculture communities and forums.",
         "yr3": "Explore advanced topics like agricultural biotechnology and sustainable agriculture. Gain practical experience through internships or research projects. Consider participating in agricultural conferences or seminars.",
