@@ -33,7 +33,7 @@ def submit_form():
         b1, b2 = recommendations
         b3 = "None"
     elif len(recommendations) == 1:
-        b1 = recommendations
+        b1 = recommendations[0]
         b2, b3 = "None", "None"
     else:
         b2, b3 = "None", "None"
@@ -50,7 +50,7 @@ def submit_form():
         elif course == "agriculture":
             b1 = "BSC(Agri)"
         elif course == "pharmacology":
-            b1 = "B.Pharma"
+            b1 = "B.PHARMA"
         # Add more cases as needed
     
     session['b1'] = b1
