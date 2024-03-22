@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form with iFrame</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" ntegrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+<style>
+  body{
+    padding: 0;
+    margin: 0;
+  }
+.container11 ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%; 
+}
+ul.ks-cboxtags {
+    list-style: none;
+}
+ul.ks-cboxtags li{
+  display: inline;
+}
+ul.ks-cboxtags li label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 8px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+    border: 2px solid #1bdbf8;
+    background-color: #12bbd4;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+  display: absolute;
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+  border: 2px solid #e9a1ff;
+}
+@media screen and (max-width:800px){
+  .container11 ul{
+    grid-template-columns: 1fr 1fr 1fr;
+    
+  }
+}
+@media screen and (max-width:400px) {
+  .container11 ul{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+</head>
+<body>
+  <div class="container11">
+    <div>
+      <p class="font-weight-bold">Please Select min 3 and max 5 options</p>
+    </div>
+    <div>
+      <form action="/" method="get" id="form" >
+                <ul class="ks-cboxtags" >
+                  <li><input type="checkbox" name="interest" id="checkboxOne" value="Biology"><label for="checkboxOne"> Biology</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxTwo" value="Chemistry"><label for="checkboxTwo"> Chemistry</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxThree" value="Research"><label for="checkboxThree"> Research </label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxFour" value="Medicine"><label for="checkboxFour"> Medicine</label></li>
+                  <li><input type="checkbox" name="interest" id="checkboxFive" value="Technology"><label for="checkboxFive"> Technology</label></li>
+                  
+                </ul>  
+
+              </div>
+
+              <div id="error-message" style="display: none; color: red;">Please select only five options.</div>
+            </form>
+            <script>
+              // Get all checkboxes
+              var checkboxes = document.querySelectorAll('input[name="interest"]');
+              // Initialize counter for selected checkboxes
+              var selectedCount = 0;
+          
+              // Add event listener to each checkbox
+              checkboxes.forEach(function (checkbox) {
+                  checkbox.addEventListener('change', function () {
+                      // If checkbox is checked and count is less than or equal to 5
+                      if (this.checked && selectedCount < 5) {
+                          // Increment the selected count
+                          selectedCount++;
+                      } else if (!this.checked) {
+                          // If checkbox is unchecked, decrement the selected count
+                          selectedCount--;
+                      } else {
+                          // If count is already 5, prevent checking the checkbox
+                          this.checked = false;
+                          // Display alert
+                          alert("You can only select up to 5 checkboxes.");
+                      }
+                  });
+              });
+          </script>
+</body>
+</html>

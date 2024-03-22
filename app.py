@@ -13,6 +13,7 @@ collection = db['registered_data']
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
+    submit()
     # Process form data
     rank = int(request.form.get('jee_rank')) if request.form.get('jee_rank') else 0# type: ignore
     income = int(request.form.get('Family_income')) # type: ignore
@@ -116,10 +117,61 @@ def finance_page():
 @app.route('/pharmacology')
 def pharmacology_page():
     return render_template('course_interests/pharmacology.html')
+@app.route('/paramedical')
+def paramedical_page():
+    return render_template('course_interests/paramedical.html')
 
 @app.route('/technology')
 def technology_page():
     return render_template('course_interests/technology.html')
+
+def submit():
+    if request.method == 'POST':
+        # Extract form data
+        full_name = request.form['Full_name']
+        email = request.form['Email']
+        whatsApp_number = int(request.form['WhatsApp_Number'])
+        Father_occupation = request.form['Father_Occupation']
+        family_income = int(request.form['Family_income'])
+        state = request.form['State']
+        city = request.form['City']
+        exam = request.form['Exam']
+        if exam == 'JEE':
+            marks = int(request.form['jee_rank'])
+        elif exam == 'NEET':
+            marks = int(request.form['neet_rank'])
+        elif exam == 'CLAT':
+            marks = int(request.form['clat_rank'])
+        elif exam == 'CUET':
+            marks = int(request.form['cuet_rank'])
+        branch = request.form.get('branch_12') 
+        per_12 = request.form.get('per_12', 0)
+        try:
+            per_12_int = int(per_12)
+        except:
+            per_12_int = 0
+        interests = request.form.get('selected_interests')
+
+        # Create a document to insert into MongoDB
+        student_data = {
+            'full_name': full_name,
+            'email': email,
+            'whatsApp_number': whatsApp_number,
+            'father_occupation': Father_occupation,
+            'family_income': family_income,
+            'exam': exam,
+            'rank':marks,
+            'branch': branch,
+            'per_12': per_12_int,
+            'state': state,
+            'city': city,
+            'interests': interests
+        }
+
+        # Insert the document into MongoDB
+        collection.insert_one(student_data)
+
+        print('Form data submitted successfully!')
 
 if __name__ == '__main__':
     app.run(debug=True)

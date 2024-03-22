@@ -175,6 +175,9 @@ input::-webkit-inner-spin-button {
     #frame_pharma iframe{
         height: 160px;
     }
+    #frame_para iframe{
+        height: 160px;
+    }
     #frame_computer iframe{
         height: 210px;
     }
@@ -194,6 +197,9 @@ input::-webkit-inner-spin-button {
         height: 310px;
     }
     #frame_pharma iframe{
+        height: 240px;
+    }
+    #frame_para iframe{
         height: 240px;
     }
     #frame_computer iframe{
@@ -222,6 +228,9 @@ input::-webkit-inner-spin-button {
         height: 330px;
     }
     #frame_pharma iframe{
+        height: 170px;
+    }
+    #frame_para iframe{
         height: 170px;
     }
     #frame_computer iframe{
