@@ -9,87 +9,88 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <style>
         body {
-    background-color: #f4f4f4;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-}
-
-#content-container {
-    max-width: 80vw;
-    margin: 50px auto;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /*overflow-x: hidden; */
-}
-
-h1 {
-    margin: 0;
-    padding: 0 20px;
-    color: #4285f4;
-    border-bottom: 2px solid #4285f4;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.subtitle {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.subtitle p {
-    color: #777;
-    margin-bottom: 10px;
-}
-
-.box-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: whitesmoke;
-    color: black;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.interest-preferences,
-.course {
-    flex: 1;
-    padding: 0 10px;
-}
-
-.interest-preferences p,
-.course p {
-    margin: 5px 0;
-}
-
-.box-container p {
-    flex: 1;
-    text-align: center;
-}
-img {
+            background-color: #f4f4f4;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+    
+        #content-container {
+            max-width: 80vw;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /*overflow-x: hidden; */
+        }
+    
+        h1 {
+            margin: 0;
+            padding: 0 20px;
+            color: #4285f4;
+            border-bottom: 2px solid #4285f4;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    
+        .subtitle {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    
+        .subtitle p {
+            color: #777;
+            margin-bottom: 10px;
+        }
+    
+        .box-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: whitesmoke;
+            color: black;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    
+        .interest-preferences,
+        .course {
+            flex: 1;
+            padding: 0 10px;
+        }
+    
+        .interest-preferences p,
+        .course p {
+            margin: 5px 0;
+        }
+    
+        .box-container p {
+            flex: 1;
+            text-align: center;
+        }
+    
+        img {
             max-width: 100%;
             height: auto;
             border-radius: 5px;
             margin-top: 10px;
         }
-.content {
-    display: grid;
-    grid-template-columns:.4fr 1fr;
-    grid-gap: 20px;
-}
-
-.content-item {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-
-.print-icon {
+    
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+    
+        .content-item {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        .print-icon {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -97,69 +98,89 @@ img {
             font-size: 24px;
             color: #fff;
         }
+    
+        .print-icon:hover {
+            background-color: #0d6efd;
+        }
+    
+        .tooltip {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 10px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    
+        .print-icon:hover + .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    
+        @media screen and (max-width: 772px) {
+            .content {
+                display: block;
+            }
+        }
+        .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Adjust column width as needed */
+            grid-gap: 20px;
+        }
 
-.print-icon:hover {
-    background-color: #0d6efd;
-}
+        .details-column {
+            padding: 10px; /* Adjust padding as needed */
+        }
 
-.tooltip {
-    position: absolute;
-    top: 50px;
-    /* right: -60px; */
-    right: 10px;
-    font-size: 16px;
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 10px;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.print-icon:hover + .tooltip {
-    visibility: visible;
-    opacity: 1;
-}
-
-@media screen and (max-width:772px) {
-    .content{
-        display: block;
-    }
-}
     </style>
+    
 </head>
 <body>
     <div id="content-container">
-        <h1>Branch Content Recommendation</h1>
-
+        <h1>Branch Recommendation</h1>
+    
+        <div class="details">
+            <div class="details-column">
+                <p><strong>Full Name:</strong> {{ full_name }}</p>
+                <p><strong>Email ID:</strong> {{ email }}</p>
+                <p><strong>Whatsapp Number:</strong> {{ whatsapp }}</p>
+            </div>
+            <div class="details-column">
+                <p><strong>Exam Rank:</strong> {{ rank }}</p>
+                <p><strong>12th Stream:</strong> {{ stream }}</p>
+                <p><strong>12th Percentage:</strong> {{ percentage }}</p>
+            </div>
+        </div>
+    
         <div class="subtitle">
             <div class="box-container">
                 <div class="interest-preferences">
-                    <p><strong>Interest Preferences:</strong></p>
-                    <p>{{ interest }}</p>
+                    <p><strong>Interest Preferences:</strong> {{ interest }}</p>
                 </div>
                 <div class="course">
-                    <p><strong>Course:</strong></p>
-                    <p>{{ crs }}</p>
+                    <p><strong>Course:</strong> {{ crs }}</p>
                 </div>
             </div>
-            <p><strong>Our model recommends you this branch:</strong></p>
-            <h2><strong>{{ b1 }}</strong></h2>
+            <p><strong>Our model recommends you this branch:</strong> {{ b1 }}</p>
         </div>
-        
-
+    
         <div class="content">
             <div id="branch-image" class="content-item"></div>
             <div id="branch-content" class="content-item"></div>
         </div>
-        {{ super() }}
+        {{super()}}  
     </div>
-
+    
     <div class="print-icon" onclick="window.print()">
         <i class="fas fa-download print-icon"></i>
         <div class="tooltip">Download</div>
     </div>
+  
 
 
     <script>
@@ -217,7 +238,7 @@ img {
         "content": "BBA, a 3-year undergraduate degree, is ideal for those interested in exploring careers in Marketing, Sales, Finance, or HR. It can be pursued full-time, through distance learning, or online, offering flexibility in learning options. Students can pursue a general BBA course to gain an overview of management and business. This gives BBA graduates a strong foundation in business and prepares them for a variety of careers in the corporate world.",
         "image": "/static/images/bba.jpg"
     },
-    " BBA-data analytics": {
+    "BBA-data analytics": {
         "content": "A Bachelor of Business Administration in Business Analytics is an undergraduate program that combines business administration principles with data analysis techniques. It equips students with essential knowledge to make data-driven decisions in the corporate world. Students learn core subjects like marketing, finance, accounting, and operations management, and gain skills in statistical methods, data mining, and predictive modeling.",
         "image": "/static/images/DataAnalytics.jpg"
     },
@@ -225,7 +246,7 @@ img {
         "content": "Bachelor of Commerce (BCom) is an undergraduate degree programme that focuses on commerce, finance, and business. Students study accounting, economics, and business management. BCom graduates are prepared for careers in finance, banking, and corporate sectors. The curriculum emphasizes practical skills, preparing students for careers as accountants, financial analysts, and business professionals in a variety of industries.",
         "image": "/static/images/bcom.jpg"
     },
-    "Hons(Retail Mgmt & E Comm.)": {
+    "Hons": {
         "content": "Bachelor of Commerce (BCom) in Retail Management is a specialized program that combines commerce principles with retail expertise. Students learn about retail operations, merchandising, and customer service. This program prepares graduates for careers in retail management, marketing, and sales, providing a blend of business acumen and retail-specific knowledge for success in the dynamic retail industry.",
         "image": "/static/images/HonsRetailManagement.jpg"
     },
@@ -241,11 +262,40 @@ img {
         "content": "A BSc in Agriculture is a dynamic discipline that emphasises sustainable food production, crop management, and environmental conservation. It provides a combination of scientific knowledge and practical skills in fields such as plant breeding, soil science, pest control, and agricultural economics. If you're passionate about caring for the land, guaranteeing food security, and making a difference in the environment, a BSc in Agriculture can lead to a rewarding career in agriculture.",
         "image": "/static/images/bsc.jpg"
     },
+    "Nursing": {
+        "content": "Nursing is more than a profession; it's a calling to care, comfort, and heal. Nurses are the heartbeat of healthcare, tirelessly advocating for patients and ensuring their well-being with compassion and expertise. From bedside manner to critical decision-making, nurses embody the essence of healthcare's humanity. They are the unsung heroes whose dedication makes a difference in countless lives every day.",
+        "image": "/static/images/nursing.jpg"
+    },
+    "BDS": {
+        "content": "A Bachelor of Dental Surgery (BDS) is an undergraduate professional degree program that prepares students for a career in dentistry. Typically, it is a five-year program, though the duration may vary depending on the country and institution. During the BDS program, students receive comprehensive training in various aspects of dentistry, including dental anatomy, oral pathology, radiology, periodontics, endodontics, orthodontics, oral surgery, and restorative dentistry. The curriculum includes both theoretical coursework and practical clinical training, allowing students to develop the necessary knowledge and skills to diagnose, treat, and prevent oral diseases and disorders. Upon completion of the BDS program, graduates are eligible to pursue licensure or registration to practice dentistry in their respective jurisdictions. They may also choose to further their education through specialization or pursue research opportunities in the field of dentistry.",
+        "image": "/static/images/BDS.jpg"
+    },
+    "BPT": {
+        "content": "A Bachelor of Physiotherapy (BPT) is an undergraduate degree program that prepares students for a career in physiotherapy, focusing on the treatment and prevention of physical injuries, disabilities, and disorders. Typically, it is a four-year program, although the duration may vary depending on the country and institution. During the BPT program, students study various aspects of human anatomy, physiology, biomechanics, kinesiology, and exercise therapy. They also learn about different physiotherapeutic techniques and modalities, including manual therapy, electrotherapy, hydrotherapy, and therapeutic exercise. The curriculum includes both theoretical coursework and practical clinical training, allowing students to develop the necessary knowledge and skills to assess, diagnose, plan, and implement treatment programs for individuals of all ages with musculoskeletal, neurological, cardiopulmonary, or other conditions. Upon completion of the BPT program, graduates are eligible to pursue licensure or registration to practice as physiotherapists in their respective jurisdictions. They may work in various settings, including hospitals, clinics, rehabilitation centers, sports facilities, schools, or community health centers, helping individuals restore movement and function, alleviate pain, and improve overall quality of life through physiotherapy interventions.",
+        "image": "/static/images/BPT.jpg"
+    },
+    "BMLT": {
+        "content": "A Bachelor of Medical Laboratory Technology (BMLT) is an undergraduate degree program that focuses on training students in various aspects of laboratory medicine and diagnostic techniques. Typically, it is a three to four-year program, though the duration may vary depending on the country and institution. During the BMLT program, students learn about different laboratory techniques, equipment, and procedures used in the analysis of biological samples such as blood, urine, tissue, and other bodily fluids. They study subjects like clinical biochemistry, microbiology, hematology, immunology, and histopathology, gaining theoretical knowledge and practical skills in laboratory testing, quality control, and interpretation of results. Upon completion of the BMLT program, graduates are qualified to work as medical laboratory technologists or technicians in various healthcare settings, including hospitals, diagnostic laboratories, research institutions, and public health agencies. They play a crucial role in disease diagnosis, monitoring treatment effectiveness, and ensuring the accuracy and reliability of laboratory test results, contributing to patient care and healthcare delivery.",
+        "image": "/static/images/BMLT.jpg"
+    },
+    "MBBS": {
+        "content": ' MBBS stands for Bachelor of Medicine, Bachelor of Surgery, which is an undergraduate degree program in the field of medicine. It typically spans five to six years, depending on the country and institution.  During the MBBS program, students undergo rigorous training in various medical disciplines, including anatomy, physiology, biochemistry, pharmacology, pathology, microbiology, and clinical medicine. The curriculum encompasses both theoretical learning and practical clinical experience, with students spending time in hospitals and clinics to gain hands-on training in patient care, diagnosis, and treatment. Upon completion of the MBBS program, graduates are awarded the qualification of "Doctor of Medicine" (MD) or "Bachelor of Medicine, Bachelor of Surgery" (MBBS), depending on the naming convention of their country or university. They are then eligible to pursue licensure or registration to practice medicine as a physician or surgeon in their respective jurisdictions. Many graduates choose to specialize further by undertaking postgraduate training in specific medical specialties through residency programs.',
+        "image": "/static/images/MBBS.jpg"
+    },
+    "Medical Technician ": {
+    "content": "Medical technicians play a crucial role in healthcare by assisting physicians and other medical professionals in diagnosing and treating patients. They perform various laboratory tests, analyze specimens, and operate medical equipment to help detect, diagnose, and monitor diseases and medical conditions. Medical technicians work in various settings, including hospitals, clinics, laboratories, and research facilities. They may specialize in areas such as clinical laboratory technology, radiologic technology, surgical technology, or cardiovascular technology. Becoming a medical technician typically requires completion of a formal training program, which may include obtaining an associate degree or certification in a specific area of medical technology. Additionally, medical technicians must possess strong analytical skills, attention to detail, and the ability to work well under pressure.",
+    "image": "/static/images/technician.jpg"
+    },
+
+    "Error": {
+        "content": "Sorry, Couldn't find any branch for your recommendations. Please try again sometime",
+        "image": "/static/images/sorry.jpg"
+    },
     "BCom(Hons)": {
         "content": "Bachelor of Commerce (BCom) Honors is an advanced undergraduate programme in India that delves deeper into commerce and business topics. Students gain in-depth knowledge by focusing on areas such as accounting, finance, and marketing. The programme focuses on research, critical thinking, and analytical skills, preparing graduates for specialized positions in business, finance, and other fields.",
         "image": "/static/images/bcomHons.jpg"
     }
-        };
+};
 
         function loadTopRecommendedBranchContent() {
             var contentDiv = document.getElementById('branch-content');

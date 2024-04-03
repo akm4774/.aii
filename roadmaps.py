@@ -87,14 +87,14 @@ roadmaps = {
         "yr4": "Stay updated on emerging trends and technologies in business administration. Develop expertise in a specific domain, such as digital marketing or operations management. Build a portfolio showcasing your projects and achievements. Consider pursuing an MBA or professional certifications."
     },
 
-    " BBA-data analytics": {
+    "BBA-data analytics": {
         "yr1": "Build a strong foundation in data analytics fundamentals. Learn about statistics, data wrangling, and data visualization. Gain proficiency in tools like Python and R. Explore online resources and tutorials.",
         "yr2": "Dive into predictive analytics and machine learning algorithms. Understand data mining techniques and regression analysis. Work on small projects to apply your knowledge. Join relevant data analytics communities and forums.",
         "yr3": "Explore advanced topics like deep learning and natural language processing. Gain practical experience through internships or research projects. Consider participating in data science competitions or hackathons.",
         "yr4": "Stay updated on emerging technologies and trends in data analytics. Develop expertise in a specific domain, such as business intelligence or healthcare analytics. Build a portfolio showcasing your data analytics projects. Consider pursuing advanced studies or certifications in data science."
     },
 
-    "Hons(Retail Mgmt & E Comm.)": {
+    "Hons": {
         "yr1": "Build a strong foundation in retail management and e-commerce fundamentals. Learn about consumer behavior, supply chain management, and digital marketing. Gain practical experience through case studies and projects. Explore online resources and tutorials.",
         "yr2": "Dive into retail analytics and omni-channel retailing. Understand inventory management and merchandising strategies. Work on small projects to apply your knowledge. Join relevant retail communities and forums.",
         "yr3": "Explore advanced topics like retail branding and CRM systems. Gain practical experience through internships in retail companies or marketing agencies. Consider participating in retail competitions or conferences.",
@@ -126,6 +126,42 @@ roadmaps = {
         "yr2": "Dive into financial management and corporate laws. Understand taxation principles and auditing practices. Work on small projects to apply your knowledge. Join relevant commerce communities and forums.",
         "yr3": "Explore advanced topics like investment analysis and international finance. Gain practical experience through internships in financial institutions or corporations. Consider participating in finance competitions or seminars.",
         "yr4": "Stay updated on emerging trends and regulations in the financial industry. Develop expertise in a specific domain, such as financial planning or risk management. Build a portfolio showcasing your finance projects and accomplishments. Consider pursuing professional certifications like CPA or CFA."
+    },
+    "MBBS": {
+        "yr1": "Begin with foundational courses in basic medical sciences such as anatomy, physiology, and biochemistry. Participate in practical lab sessions and anatomy dissections. Gain exposure to clinical settings through observation.",
+        "yr2": "Delve deeper into medical subjects including pathology, microbiology, and pharmacology. Start clinical rotations to interact with patients under supervision. Learn about medical ethics and professionalism.",
+        "yr3": "Focus on clinical clerkships in various specialties such as internal medicine, surgery, pediatrics, and obstetrics/gynecology. Develop clinical skills in history taking, physical examination, and patient management.",
+        "yr4": "Further refine clinical skills during advanced clerkships and elective rotations. Prepare for licensing exams such as the USMLE (United States Medical Licensing Examination) or equivalent. Consider research opportunities or international medical electives."
+    },
+    "BDS": {
+        "yr1": "Begin with foundational courses in dental sciences including dental anatomy, histology, and physiology. Gain practical experience in dental labs and clinics. Understand the basics of oral health and hygiene.",
+        "yr2": "Deepen your knowledge in dental subjects such as oral pathology, pharmacology, and microbiology. Start clinical rotations in dental clinics to observe and assist with patient care.",
+        "yr3": "Focus on clinical training in various dental specialties such as periodontics, endodontics, and prosthodontics. Develop skills in dental procedures and patient management under supervision.",
+        "yr4": "Advance your clinical skills through hands-on experience in complex dental procedures and surgeries. Prepare for licensing exams such as the National Board Dental Examination (NBDE) or equivalent."
+    },
+    "BPT": {
+        "yr1": "Start with foundational courses in anatomy, physiology, and biomechanics. Learn about human movement sciences and physical therapy principles. Gain practical experience through clinical placements and exercises.",
+        "yr2": "Deepen your understanding of musculoskeletal and neurological rehabilitation. Acquire skills in therapeutic exercise, manual therapy, and electrotherapy techniques. Begin clinical rotations in physical therapy settings.",
+        "yr3": "Focus on clinical internships in various specialties such as orthopedics, neurology, and pediatric physical therapy. Develop skills in patient assessment, treatment planning, and rehabilitation protocols.",
+        "yr4": "Advance your clinical competencies through hands-on experience in complex patient cases and specialized interventions. Prepare for licensing exams such as the National Physical Therapy Examination (NPTE) or equivalent."
+    },
+    "BMLT": {
+        "yr1": "Begin with foundational courses in medical laboratory sciences including clinical biochemistry, hematology, and microbiology. Gain hands-on experience in laboratory techniques and procedures.",
+        "yr2": "Deepen your knowledge in laboratory diagnostics and instrumentation. Learn about histopathology, immunology, and clinical microbiology. Start clinical rotations in laboratory settings.",
+        "yr3": "Focus on clinical internships in various laboratory departments such as clinical chemistry, hematology, and blood banking. Develop skills in sample processing, analysis, and quality control.",
+        "yr4": "Advance your laboratory skills through practical experience in specialized diagnostic techniques and research methodologies. Prepare for licensing exams or certifications in medical laboratory technology."
+    },
+    "Nursing": {
+        "yr1": "Begin with foundational courses in nursing fundamentals, anatomy, and physiology. Gain clinical experience in basic patient care skills such as vital signs monitoring and hygiene.",
+        "yr2": "Deepen your understanding of medical-surgical nursing, pharmacology, and pathophysiology. Develop skills in patient assessment, medication administration, and nursing interventions.",
+        "yr3": "Focus on clinical rotations in various healthcare settings such as hospitals, clinics, and community health centers. Learn about specialty areas of nursing including psychiatric, pediatric, and geriatric nursing.",
+        "yr4": "Advance your nursing competencies through hands-on experience in complex patient cases and specialized care settings. Prepare for licensing exams such as the NCLEX-RN (National Council Licensure Examination for Registered Nurses) or equivalent."
+    },
+    "Medical Technician ": {
+        "yr1": "Begin with foundational courses in medical laboratory techniques and instrumentation. Gain hands-on experience in specimen collection, processing, and analysis. Learn about laboratory safety protocols and quality assurance.",
+        "yr2": "Deepen your knowledge in specialized areas of medical technology such as clinical chemistry, hematology, and microbiology. Start clinical rotations in laboratory settings to apply your skills.",
+        "yr3": "Focus on clinical internships in various laboratory departments such as clinical chemistry, hematology, and microbiology. Develop skills in sample processing, analysis, and quality control.",
+        "yr4": "Advance your laboratory skills through practical experience in specialized diagnostic techniques and research methodologies. Prepare for licensing exams or certifications in medical laboratory technology."
     }
     # Add other roadmaps here...
 }

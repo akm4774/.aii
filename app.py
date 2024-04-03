@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
-from model2 import predict_top_unique_branches
+from model3 import predict_top_unique_branches
 from pymongo import MongoClient
 from roadmaps import roadmaps
 import numpy as np
@@ -13,12 +13,29 @@ collection = db['registered_data']
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
-    submit()
+    #submit()
     # Process form data
-    rank = int(request.form.get('jee_rank')) if request.form.get('jee_rank') else 0# type: ignore
+    full_name = request.form.get('Full_name')
+    email = request.form.get('Email')
+    whatsapp = request.form.get('WhatsApp_Number')
+    per_12_input = request.form.get('per_12')
+    percentage = float(per_12_input) if per_12_input is not None else 0
+    stream = request.form.get('branch_12')
+    #rank = int(request.form.get('jee_rank')) if request.form.get('jee_rank') else 0# type: ignore
     income = int(request.form.get('Family_income')) # type: ignore
     binterests = request.form.get('selected_interests')
     course = request.form.get('interests')
+    jee_rank = request.form.get('jee_rank')
+    neet_rank = request.form.get('neet_rank')
+    clat_rank = request.form.get('clat_rank')
+    cuet_rank = request.form.get('cuet_rank')
+
+    # Find the first non-empty rank value among the four
+    rank = next((rank for rank in [jee_rank, neet_rank, clat_rank, cuet_rank] if rank), None)
+
+    # Convert the rank to an integer if it exists
+    if rank:
+        rank = int(rank)
     print(binterests)
     selected_interests = binterests if binterests else ""
     print(selected_interests, rank, income, course)
@@ -43,21 +60,30 @@ def submit_form():
         if course == "technology":
             b1 = "Cyber Security"
         elif course == "administration":
-            b1 = "Hons(Retail Mgmt & E Comm.)"
+            b1 = "Hons"
         elif course == "finance-accounting":
             b1 = "BCom(Hons)"
         elif course == "computer-application":
             b1 = "BCA"
         elif course == "agriculture":
             b1 = "BSC(Agri)"
-        elif course == "pharmacology":
+        elif course == "medical/pharmacy":
             b1 = "B.PHARMA"
         # Add more cases as needed
-    
+    if b1 == 'Some of the provided interests are not appropriate for the selected stream.':
+        b1 = "Error"
     session['b1'] = b1
     print(b1)
-    return render_template('main.html', b1=b1, b2=b2.upper() if b2 else None, b3=b3.upper() if b3 else None, interest=selected_interests, crs=course)
- 
+    return render_template('main.html', 
+                           b1=b1, b2=b2, b3=b3,
+                           full_name=full_name, 
+                           email=email, 
+                           whatsapp=whatsapp,   
+                           percentage=percentage, 
+                           interest=selected_interests,
+                           stream = stream,
+                           rank = rank, 
+                           crs=course)
 @app.route('/roadmap')
 def roadmap():
     # Retrieve 'b1' from the session
@@ -114,9 +140,9 @@ def computer_app_page():
 def finance_page():
     return render_template('course_interests/finance.html')
 
-@app.route('/pharmacology')
-def pharmacology_page():
-    return render_template('course_interests/pharmacology.html')
+@app.route('/medical/pharmacy')
+def medicalpharmacy_page():
+    return render_template('course_interests/medical/pharmacy.html')
 @app.route('/paramedical')
 def paramedical_page():
     return render_template('course_interests/paramedical.html')
