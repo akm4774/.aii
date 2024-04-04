@@ -29,7 +29,7 @@
 
                     <div class="form-outline">
                       <label class="form-label font-weight-bold" for="fullName">Full Name</label>
-                      <input type="text" id="fullName" class="form-control form-control-lg" name="Full_name" required />
+                      <input type="text" id="fullName" class="form-control form-control-lg" name="Full_name" pattern="[A-Za-z][A-Za-z\s]*" title="Name should not contain digits." required />
                     </div>
 
                   </div>
@@ -37,7 +37,7 @@
 
                     <div class="form-outline">
                       <label class="form-label font-weight-bold" for="email">Email</label>
-                      <input type="email" id="email" class="form-control form-control-lg" name="Email" required />
+                      <input type="email" id="email" class="form-control form-control-lg" name="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address." required />
 
                     </div>
 
@@ -45,8 +45,7 @@
                   <div class="col-md-6 pb-2">
                     <div class="form-outline">
                       <label class="form-label font-weight-bold" for="WhatsApp_Number">WhatsApp Number</label>
-                      <input type="number" id="WhatsApp_Number" class="form-control form-control-lg"
-                        name="WhatsApp_Number" required />
+                      <input type="text" id="WhatsApp_Number" class="form-control form-control-lg" name="WhatsApp_Number" pattern="[6-9]\d{9}" title="Please enter a valid WhatsApp number." required />
                       <!-- <label for="family_income" class="form-label label">Please enter income in rupees</label> -->
                     </div>
 
@@ -55,12 +54,18 @@
                 <div class="row row1 row2" style="padding:0 0 20px 0;">
                   <div class="col-md-6 pb-2">
                     <div class="form-outline">
-                      <label class="form-label font-weight-bold" for="Father_Occupation">Father's Occupation</label>
-                      <input type="text" id="Father_Occupation" class="form-control form-control-lg"
-                        name="Father_Occupation" />
+                        <label class="form-label select-label font-weight-bold" for="Father_Occupation">Father's Occupation</label>
+                        <select class="form-control-lg form-control" id="Father_Occupation" name="Father_Occupation">
+                            <option value="" disabled selected>Select Father's Occupation</option>
+                            <option value="Engineer">Engineer</option>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="Businessman">Businessman</option>
+                            <!-- Add more options as needed -->
+                        </select>
                     </div>
-
-                  </div>
+                </div>
+                
                   <div class="col-md-6">
                     <div class="form-outline">
                       <label class="form-label font-weight-bold" for="family_income">Family Income</label>
@@ -198,7 +203,7 @@
                   </div>
 
                 </div>
-                
+                <p class="help-text">Please select a stream and enter your 12th percentage to enable the interests selection.</p>
                 <div class="row" id="interest">
                   <div class="col-12">
                     <label for="interest" class="interest font-weight-bold">Interests</label required><br>
@@ -206,37 +211,37 @@
 
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="technology" name="interests" value="technology"
-                          onclick="toggleButton()">
+                          onclick="toggleButton()" title="Please select this option">
                         <label for="technology">Technical/Engineering</label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="administration" name="interests"
-                          value="administration" onclick="toggleButton()">
+                          value="administration" onclick="toggleButton()" title="Please select this option">
                         <label for="administration">Business Administration </label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="finance-accounting" name="interests"
-                          value="finance-accounting" onclick="toggleButton()">
+                          value="finance-accounting" onclick="toggleButton()" title="Please select this option">
                         <label for="finance-accounting">Finance & Accounting</label><br>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="computer-application" name="interests"
-                          value="computer-application" onclick="toggleButton()">
+                          value="computer-application" onclick="toggleButton()" title="Please select this option">
                         <label for="computer-application">Computer Application</label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="medical/pharmacy" name="interests" value="medical/pharmacy"
-                          onclick="toggleButton()">
+                          onclick="toggleButton()" title="Please select this option">
                         <label for="medical/pharmacy">Medical/Pharmacy</label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="paramedical" name="interests" value="paramedical"
-                          onclick="toggleButton()">
+                          onclick="toggleButton()" title="Please select this option">
                         <label for="paramedical">Paramedical</label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="agriculture" name="interests" value="agriculture"
-                          onclick="toggleButton()">
+                          onclick="toggleButton()" title="Please select this option">
                         <label for="agriculture">Agriculture</label>
                       </div>
                     </div>
@@ -326,6 +331,14 @@
   <script>
     document.getElementById("form").addEventListener("submit", function (event) {
       event.preventDefault();
+      // Get the selected interest radio button
+      var selectedInterest = document.querySelector('input[name="interests"]:checked');
+
+      // Check if any interest radio button is selected
+      if (!selectedInterest) {
+          alert("Please select your course interest.");
+          return; // Prevent form submission
+      }
       // Get the ID of the selected radio button
       var crs = document.querySelector('input[name="interests"]:checked').id;
 
