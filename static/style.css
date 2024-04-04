@@ -97,7 +97,17 @@ input::-webkit-inner-spin-button {
     background-color: rgb(55, 193, 248);
 }
 
+.btn-change-course {
+    background-color: rgb(102, 209, 252);
+    padding: 5px 7px;
+    border-radius: 14px;
+    border: 0px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
+.btn-change-course:hover {
+    background-color: rgb(55, 193, 248);
+}
 
 @media (min-width: 1200px )
 {

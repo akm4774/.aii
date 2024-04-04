@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from model3 import predict_top_unique_branches
 from pymongo import MongoClient
 from roadmaps import roadmaps
+from content import branchContent
+from insights import insights
+
 import numpy as np
 app = Flask(__name__)
 app.secret_key = 'secret_key'  # Set a secret key for session management
@@ -74,6 +77,38 @@ def submit_form():
         b1 = "Error"
     session['b1'] = b1
     print(b1)
+    # Retrieve branch content and image from branchContent dictionary
+    branch_data = branchContent.get(b1)
+    if branch_data:
+        branch_content = branch_data.get('content', "Content not available for the top recommended branch.")
+        branch_image = branch_data.get('image')
+    else:
+        branch_content = "Content not available for the top recommended branch."
+        branch_image = None
+    if b1 in insights:
+        insight = insights[b1]["insight"]
+        graph = insights[b1]["graph"]
+    else:
+        insight = ""
+        graph = ""
+    # Store branch data in session
+    session['b1_data'] = get_branch_data(b1)
+    
+    session['form_data'] = {
+    'full_name': full_name,
+    'email': email,
+    'whatsapp': whatsapp,
+    'percentage': percentage,
+    'interest': selected_interests,
+    'stream': stream,
+    'rank': rank,
+    'crs': course
+}
+
+    if b2:
+        session['b2'] = b2
+    if b3:
+        session['b3'] = b3
     return render_template('main.html', 
                            b1=b1, b2=b2, b3=b3,
                            full_name=full_name, 
@@ -83,7 +118,11 @@ def submit_form():
                            interest=selected_interests,
                            stream = stream,
                            rank = rank, 
-                           crs=course)
+                           crs=course,
+                           branch_content=branch_content,
+                           branch_image=branch_image,
+                           insight=insight,
+                           graph=graph)
 @app.route('/roadmap')
 def roadmap():
     # Retrieve 'b1' from the session
@@ -91,6 +130,76 @@ def roadmap():
     roadmap_data = roadmaps.get(b1, {})  # Get the roadmap data for the branch
     return render_template('roadmap.html', b1 = b1, roadmapData=roadmap_data, roadmaps = roadmaps)
 # Call the function from model.py to predict top unique branches
+@app.route('/b2')
+def branch_b2():
+    
+    b2 = session.get('b2', '')
+    b1 = session.get('b1', '')
+    b3 = session.get('b3', '')
+    form_data = session.get('form_data', {})
+    branch_data = get_branch_data(b2)
+    if branch_data:
+        branch_content, branch_image, insight, graph = branch_data
+        return render_template('main.html', 
+                               b1=b2, b2=b1, b3=b3, 
+                               branch_content=branch_content, 
+                               branch_image=branch_image, 
+                               insight=insight, 
+                               graph=graph,
+                               full_name=form_data.get('full_name', ''),
+                               email=form_data.get('email', ''),
+                               whatsapp=form_data.get('whatsapp', ''),
+                               percentage=form_data.get('percentage', 0),
+                               interest=form_data.get('interest', ''),
+                               stream=form_data.get('stream', ''),
+                               rank=form_data.get('rank', 0),
+                               crs=form_data.get('crs', ''))
+    else:
+        # Handle case when data is not available
+        return "Data not available for branch b2"
+
+@app.route('/b3')
+def branch_b3():
+    
+    b3 = session.get('b3', '')
+    b2 = session.get('b2', '')
+    b1 = session.get('b1', '')
+    branch_data = get_branch_data(b3)
+    form_data = session.get('form_data', {})
+    if branch_data:
+        branch_content, branch_image, insight, graph = branch_data
+        return render_template('main.html', 
+                               b1=b3, b2=b2, b3=b1, 
+                               branch_content=branch_content, 
+                               branch_image=branch_image, 
+                               insight=insight, 
+                               graph=graph,
+                               full_name=form_data.get('full_name', ''),
+                               email=form_data.get('email', ''),
+                               whatsapp=form_data.get('whatsapp', ''),
+                               percentage=form_data.get('percentage', 0),
+                               interest=form_data.get('interest', ''),
+                               stream=form_data.get('stream', ''),
+                               rank=form_data.get('rank', 0),
+                               crs=form_data.get('crs', ''))
+    else:
+        # Handle case when data is not available
+        return "Data not available for branch b3"
+
+
+def get_branch_data(branch):
+    branch_data = branchContent.get(branch)
+    if branch_data:
+        branch_content = branch_data.get('content', "Content not available for this branch.")
+        branch_image = branch_data.get('image')
+    else:
+        branch_content = "Content not available."
+        branch_image = None
+
+    insight = insights.get(branch, {}).get("insight", "")
+    graph = insights.get(branch, {}).get("graph", "")
+
+    return branch_content, branch_image, insight, graph
 
 
 

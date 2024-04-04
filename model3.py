@@ -12,11 +12,11 @@ def preprocess_course(course):
     course_mapping = {
         "technology": "BTech",
         "administration": "BBA",
-        "finance and accounting": "BCom",
-        "computer application": "BCA",
+        "finance-accounting": "BCom",
+        "computer-application": "BCA",
         "agriculture": "BSC(Agriculture)",
-        "medical/pharmacy": "NEET-C",
-        "paramedical": "PARA"
+        "medical/pharmacy": "MEDICAL",
+        "paramedical": "PARAMEDICAL"
     }
     return course_mapping.get(course.lower(), course)
 
@@ -41,7 +41,7 @@ def predict_top_unique_branches(user_interest, user_rank=None, top_n=3, course=N
     user_interests = preprocess_interests(user_interest)
     course = preprocess_course(course)
 
-    data = load_data("static/final-sheet.csv")
+    data = load_data("static/updatedsheet.csv")
     filtered_data = data if course is None else data[data['Course'].str.lower() == course.lower()]
 
     dataset_interests = set(filtered_data['Interest'].str.lower().str.split(',').explode().unique())
@@ -67,8 +67,9 @@ def predict_top_unique_branches(user_interest, user_rank=None, top_n=3, course=N
 
     top_unique_branches = result_df['Branch'].unique()[:top_n]
 
-    if 'CSE' in top_unique_branches and user_rank is not None and user_rank > 80000:
-        top_unique_branches = [branch for branch in top_unique_branches if branch != 'CSE'] + ['CSE']
+    if 'Computer Science and Engineering (CSE)' in top_unique_branches and user_rank is not None and user_rank > 80000:
+      top_unique_branches = [branch for branch in top_unique_branches if branch != 'Computer Science and Engineering (CSE)'] + ['Computer Science and Engineering (CSE)']
+
 
     if len(top_unique_branches) == 0:
         return "No top branches found for the given criteria."
@@ -82,5 +83,3 @@ def save_model(model, filename):
         print("Model saved successfully as", filename)
     except Exception as e:
         print("Error occurred while saving the model:", str(e))
-
-

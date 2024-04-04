@@ -100,7 +100,7 @@
                   <div class="col-md-6">
                     <div class="form-outline">
                       <label class="form-label select-label font-weight-bold" for="12th_branch">12th Stream</label>
-                      <select class="form-control-lg form-control" id="12th_branch" name="branch_12" onclick="change()"
+                      <select class="form-control-lg form-control" id="12th_branch" name="branch_12"
                         onchange="handleRadioVisibility()">
                         <option value="" disabled selected>Select an option</option>
                         <option value="PCM">PCM</option>
@@ -116,7 +116,7 @@
                             12th Percentage
                             <small class="text-muted">(If Awaited, Please Enter 0)</small>
                         </label>
-                        <input type="number" id="12th_marks" max="100" min="0" class="form-control form-control-lg" name="per_12" />
+                        <input type="number" id="12th_marks" max="100" min="0" class="form-control form-control-lg" name="per_12" required/>
                     </div>
                 </div>
                 
@@ -250,18 +250,20 @@
                 <div class="row" style="display: none; margin-top: 50px;" id="frame_tech">
                   <div class="col-12">
 
-                    <input class="radio-label" type="radio" id="prev_t" name="interests" value="prev"
+                    <input class="radio-label" type="radio" id="prev_t" name="interests" value="prev" style="opacity: 0;"
                       onclick="toggleButton()">
-                    <label for="prev" class="font-weight-bold">Change Course</label>
+                    <label for="prev_t" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/technology" frameborder="1" id="frame-technology" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin-top:50px;" id="frame_admin">
                   <div class="col-12">
-                    <input class="radio-label" type="radio" id="prev_a" name="interests" value="prev"
-                      onclick="toggleButton()">
-                    <label for="prev" class="font-weight-bold">Change Course</label>
+                    <input class="radio-label" type="radio" id="prev_a" name="interests" value="prev" style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_a" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/administration" frameborder="1" id="frame-administration" width="100%"></iframe>
 
                   </div>
@@ -269,8 +271,10 @@
                 <div class="row" style="display: none; margin-top:50px;" id="frame_finance">
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev_f" name="interests" value="prev"
-                      onclick="toggleButton()">
-                    <label for="prev" class="font-weight-bold">Change Course</label>
+                    style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_f" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/finance" frameborder="1" id="frame-finance-accounting" width="100%"></iframe>
 
                   </div>
@@ -278,8 +282,10 @@
                 <div class="row" style="display: none; margin-top:50px ;" id="frame_computer">
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev_c" name="interests" value="prev"
-                      onclick="toggleButton()">
-                    <label for="prev" class="font-weight-bold">Change Course</label>
+                    style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_c" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/computer_app" frameborder="1" id="frame-computer-application" width="100%"></iframe>
 
                   </div>
@@ -287,8 +293,10 @@
                 <div class="row" style="display: none; margin-top:50px;" id="frame_pharma">
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev_p" name="interests" value="prev"
-                      onclick="toggleButton()">
-                    <label for="prev" class="font-weight-bold">Change Course</label>
+                    style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_p" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>                    
                     <iframe src="/medical/pharmacy" frameborder="1" id="frame-medical/pharmacy" width="100%"></iframe>
 
                   </div>
@@ -296,8 +304,10 @@
                 <div class="row" style="display: none; margin-top:50px;" id="frame_para">
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev_pa" name="interests" value="prev"
-                      onclick="toggleButton()">
-                    <label for="prev" class="font-weight-bold">Change Course</label>
+                    style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_pa" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/paramedical" frameborder="1" id="frame-paramedical" width="100%"></iframe>
 
                   </div>
@@ -305,8 +315,10 @@
                 <div class="row" style="display: none; margin-top:50px;" id="frame_agri">
                   <div class="col-12">
                     <input class="radio-label" type="radio" id="prev_ag" name="interests" value="prev"
-                      onclick="toggleButton()">
-                    <label for="prev" class="font-weight-bold">Change Course</label>
+                    style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_ag" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/agriculture" frameborder="1" id="frame-agriculture" width="100%"></iframe>
 
                   </div>
