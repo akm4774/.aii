@@ -80,7 +80,24 @@ ul.ks-cboxtags li input[type="checkbox"] {
 ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   border: 2px solid #e9a1ff;
 }
+/* @media screen and (max-width:800px){
+  .container11 ul{
+    grid-template-columns: 1fr 1fr 1fr;
+    
+  }
+}
+@media screen and (max-width:400px) {
+  .container11 ul{
+    grid-template-columns:1fr;
+  }
+} */
 @media screen and (max-width:800px){
+  .container11 ul{
+    grid-template-columns: 1fr 1fr 1fr;
+    
+  }
+}
+@media screen and (max-width:600px){
   .container11 ul{
     grid-template-columns: 1fr 1fr;
     
@@ -91,6 +108,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     grid-template-columns:1fr;
   }
 }
+
 </style>
 </head>
 <body>
@@ -100,22 +118,21 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     </div>
     <div>
       <form action="/" method="get" id="form" >
-                <ul class="ks-cboxtags" >
-                  <li><input type="checkbox" name="interest" id="checkboxOne" value="Accounting"><label for="checkboxOne"> Accounting</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxTwo" value="Auditing"><label for="checkboxTwo"> Auditing</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxThree" value="Banking"><label for="checkboxThree"> Banking</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxFour" value="Business Economics"><label for="checkboxFour"> Business Economics</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxFive" value="E-Commerce"><label for="checkboxFive"> E-Commerce</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxSix" value="Economics"><label for="checkboxSix"> Economics</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxSeven" value="Finance"><label for="checkboxSeven"> Finance</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxEight" value="Human Resource"><label for="checkboxEight"> Human Resource</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxNine" value="Logistics"><label for="checkboxNine"> Logistics</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxTen" value="Management"><label for="checkboxTen"> Management</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxEleven" value="Marketing"><label for="checkboxEleven"> Marketing</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxTwelve" value="Mathematics"><label for="checkboxTwelve"> Mathematics</label></li>
-                  <li><input type="checkbox" name="interest" id="checkboxThirteen" value="Strategy"><label for="checkboxThirteen"> Strategy</label></li>
+                  <ul class="ks-cboxtags">
+                    <li><input type="checkbox" name="interest" id="checkboxOne" value="Biology"><label for="checkboxOne"> Biology</label></li>
+                    <li><input type="checkbox" name="interest" id="checkboxTwo" value="Chemistry"><label for="checkboxTwo"> Chemistry</label></li>
+                    <li><input type="checkbox" name="interest" id="checkboxThree" value="Communication"><label for="checkboxThree"> Communication</label></li>
+                    <li><input type="checkbox" name="interest" id="checkboxFour" value="Diagnosis"><label for="checkboxFour"> Diagnosis</label></li>
+                    <li><input type="checkbox" name="interest" id="checkboxFive" value="Medicine"><label for="checkboxFive"> Medicine</label></li>
+                    <li><input type="checkbox" name="interest" id="checkboxSix" value="Oral Health"><label for="checkboxSix"> Oral Health</label></li>
+                    <li><input type="checkbox" name="interest" id="checkboxSeven" value="Problem-Solving"><label for="checkboxSeven"> Problem-Solving</label></li>
+                    <li><input type="checkbox" name="interest" id="checkboxEight" value="Research"><label for="checkboxEight"> Research</label></li>
+                    <li><input type="checkbox" name="interest" id="checkboxNine" value="Surgery"><label for="checkboxNine"> Surgery</label></li>
+                    <li><input type="checkbox" name="interest" id="checkboxTen" value="Technology"><label for="checkboxTen"> Technology</label></li>
 
-                </ul>  
+                </ul>
+       
+
               </div>
 
               <div id="error-message" style="display: none; color: red;">Please select only five options.</div>

@@ -249,19 +249,19 @@
     -->
     
     <p style="padding: 20px;">Click here to view the roadmap:
-        <a href="{{ url_for('roadmap', branch=b1) }}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">
+        <a id="roadmap-link" href="{{ url_for('roadmap', branch=b1) }}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">
          <Strong>Roadmap 
         </Strong>
         </a>
         
       </p>
       
-    <div class="further-recommendations" >
+      <div class="further-recommendations">
         <h2>Further Recommendations</h2>
         <p>Explore these additional options:</p>
         <ul>
-            <li>{{ b2 }}</li>
-            <li>{{ b3 }}</li>
+            <li style="font-size: medium;"><a id="branch2-link" href="/b2" target="_blank"><strong>{{ b2 }}</strong></a></li>
+            <li style="font-size: medium;"><a id="branch3-link" href="/b3" target="_blank"><strong>{{ b3 }}</strong></a></li>
         </ul>
     </div>
     {% endblock %}
@@ -294,5 +294,6 @@
         }
         
     </script>
+    
 </body>
 </html>

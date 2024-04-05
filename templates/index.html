@@ -24,12 +24,13 @@
             <div class="card-body p-4 p-md-5">
               <form id="form" action="/submit_form" method="post">
 
-                <div class="row row1 row2">
+                <div class="row row1 row2" style="padding:0 0 20px 0;">
                   <div class="col-md-6">
 
                     <div class="form-outline">
                       <label class="form-label font-weight-bold" for="fullName">Full Name</label>
-                      <input type="text" id="fullName" class="form-control form-control-lg" name="Full_name" required />
+                      <input type="text" id="fullName" class="form-control form-control-lg" name="Full_name" pattern="[A-Za-z][A-Za-z\s]*" title="Name should not contain digits." required />
+                      <div id="nameError" class="text-danger"></div>
                     </div>
 
                   </div>
@@ -37,24 +38,46 @@
 
                     <div class="form-outline">
                       <label class="form-label font-weight-bold" for="email">Email</label>
-                      <input type="email" id="email" class="form-control form-control-lg" name="Email" required />
-
+                      <input type="email" id="email" class="form-control form-control-lg" name="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address." required />
+                      <div id="emailError" class="text-danger"></div>
                     </div>
 
                   </div>
                   <div class="col-md-6 pb-2">
-
                     <div class="form-outline">
-                      <label class="form-label font-weight-bold" for="family_income">Family Income</label>
-                      <input type="number" id="family_income" class="form-control form-control-lg" name="Family_income"
-                        required />
-                      <label for="family_income" class="form-label label">Please enter income in rupees</label>
-
+                      <label class="form-label font-weight-bold" for="WhatsApp_Number">WhatsApp Number</label>
+                      <input type="text" id="WhatsApp_Number" class="form-control form-control-lg" name="WhatsApp_Number" pattern="[6-9]\d{9}" title="Please enter a valid WhatsApp number." required />
+                      <!-- <label for="family_income" class="form-label label">Please enter income in rupees</label> -->
+                      <div id="phoneError" class="text-danger"></div>
                     </div>
 
                   </div>
                 </div>
-                <div class="row row1 row2">
+                <div class="row row1 row2" style="padding:0 0 20px 0;">
+                  <div class="col-md-6 pb-2">
+                    <div class="form-outline">
+                        <label class="form-label select-label font-weight-bold" for="Father_Occupation">Father's Occupation</label>
+                        <select class="form-control-lg form-control" id="Father_Occupation" name="Father_Occupation">
+                            <option value="" disabled selected>Select Father's Occupation</option>
+                            <option value="Government Employee">Government Employee</option>
+                            <option value="Private Sector Employee">Private Sector Employee</option>
+                            <option value="Self Employed">Self Employed</option>
+                            <option value="Unemployed">Unemployed</option>
+                            <option value="Other">Other</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                </div>
+                
+                  <div class="col-md-6">
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="family_income">Family Income</label>
+                      <input type="number" id="family_income" class="form-control form-control-lg" name="Family_income"
+                        required />
+                      <!-- <label for="family_income" class="form-label label">Please enter income in rupees</label> -->
+
+                    </div>
+                  </div>
                   <div class="col-md-6">
 
                     <div class="form-outline">
@@ -64,6 +87,10 @@
                     </div>
 
                   </div>
+
+
+                </div>
+                <div class="row row1 row2" style="padding: 0 0 20px 0;">
                   <div class="col-md-6">
 
                     <div class="form-outline">
@@ -73,17 +100,29 @@
                     </div>
 
                   </div>
-                  <div class="col-md-6 pb-2">
-
-
+                  <div class="col-md-6">
                     <div class="form-outline">
-                      <label class="form-label font-weight-bold" for="jee_rank">JEE Rank</label>
-                      <input type="number" id="jee_rank" class="form-control form-control-lg" name="jee_rank" />
-                      <label for="jee_rank" class="form-label label">Please enter rank in numbers</label>
-
+                      <label class="form-label select-label font-weight-bold" for="12th_branch">12th Stream</label>
+                      <select class="form-control-lg form-control" id="12th_branch" name="branch_12"
+                        onchange="handleRadioVisibility()">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="PCM">PCM</option>
+                        <option value="PCB">PCB</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Arts">Arts</option>
+                      </select>
                     </div>
-
                   </div>
+                  <div class="col-md-6 pb-2">
+                    <div class="form-outline">
+                        <label class="form-label font-weight-bold" for="12th_marks">
+                            12th Percentage
+                            <small class="text-muted">(If Awaited, Please Enter 0)</small>
+                        </label>
+                        <input type="number" id="12th_marks" max="100" min="0" class="form-control form-control-lg" name="per_12" required/>
+                    </div>
+                </div>
+                
                 </div>
 
                 <!-- <div class="row row1" id="diploma1">
@@ -113,66 +152,100 @@
 
                   </div>
                 </div> -->
-
-                <div class="row row1 row2">
+                <div class="row row1 row2" style="padding:0 0 20px 0;">
 
                   <div class="col-md-6">
                     <div class="form-outline">
-                      <label class="form-label select-label font-weight-bold" for="12th_branch">12th Branch</label>
-                      <select class="form-control-lg form-control" id="12th_branch" name="branch_12" onclick="change()" onchange="handleRadioVisibility()">
+                      <label class="form-label select-label font-weight-bold" for="exam">Select Exam</label>
+                      <select class="form-control-lg form-control" id="exam" name="Exam"
+                        onclick="handleRadioVisibility1()">
                         <option value="" disabled selected>Select an option</option>
-                        <option value="PCM" >PCM</option>
-                        <option value="PCB">PCB</option>
-                        <option value="Commerce">Commerce</option>
-                        <option value="Arts">Arts</option>
+                        <option value="JEE">JEE</option>
+                        <option value="NEET">NEET</option>
+                        <option value="CLAT">CLAT</option>
+                        <option value="CUET">CUET</option>
                       </select>
                     </div>
                   </div>
-                  <div class="col-md-6 pb-2">
-                  <div class="form-outline">
-                      <label class="form-label font-weight-bold" for="12th_marks">12th Percentage</label>
-                      <input type="number" id="12th_marks" max="100" min="0" class="form-control form-control-lg"
-                        name="per_12" />
+                  <div></div>
+                  <div class="col-md-6 pb-2" style="display: none;" id="jee">
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="jee_rank">JEE Rank</label>
+                      <input type="number" id="jee_rank" class="form-control form-control-lg" name="jee_rank" />
+                      <label for="jee_rank" class="form-label label">Please enter rank in numbers</label>
+
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 pb-2" style="display: none;" id="neet">
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="neet_rank">NEET Rank</label>
+                      <input type="number" id="neet_rank" class="form-control form-control-lg" name="neet_rank" />
+                      <label for="neet_rank" class="form-label label">Please enter rank in numbers</label>
+
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 pb-2" style="display: none;" id="clat">
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="clat_rank">CLAT Rank</label>
+                      <input type="number" id="clat_rank" class="form-control form-control-lg" name="clat_rank" />
+                      <label for="clat_rank" class="form-label label">Please enter rank in numbers</label>
+
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 pb-2" style="display: none;" id="cuet">
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="cuet_rank">CUET Rank</label>
+                      <input type="number" id="cuet_rank" class="form-control form-control-lg" name="cuet_rank" />
+                      <label for="cuet_rank" class="form-label label">Please enter rank in numbers</label>
+
                     </div>
 
                   </div>
 
                 </div>
-
+                <p class="help-text">Please select a stream and enter your 12th percentage to enable the interests selection.</p>
                 <div class="row" id="interest">
                   <div class="col-12">
                     <label for="interest" class="interest font-weight-bold">Interests</label required><br>
                     <div class="interest-container">
-                        
+
                       <div class="grid-item">
-                        <input class="radio-label" type="radio" id="technology" name="interests" 
-                        value="technology" onclick="toggleButton()">
-                        <label for="technology" >Technology</label>
+                        <input class="radio-label" type="radio" id="technology" name="interests" value="technology"
+                          onclick="toggleButton()" title="Please select this option">
+                        <label for="technology">Technical/Engineering</label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="administration" name="interests"
-                          value="administration" onclick="toggleButton()">
-                        <label for="administration">Administration </label>
+                          value="administration" onclick="toggleButton()" title="Please select this option">
+                        <label for="administration">Business Administration </label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="finance-accounting" name="interests"
-                          value="finance-accounting" onclick="toggleButton()">
-                        <label for="finance-accounting" >Finance & Accounting</label><br>
+                          value="finance-accounting" onclick="toggleButton()" title="Please select this option">
+                        <label for="finance-accounting">Finance & Accounting</label><br>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="computer-application" name="interests"
-                          value="computer-application" onclick="toggleButton()">
-                        <label for="computer-application" >Computer Application</label>
+                          value="computer-application" onclick="toggleButton()" title="Please select this option">
+                        <label for="computer-application">Computer Application</label>
                       </div>
                       <div class="grid-item">
-                        <input class="radio-label" type="radio" id="pharmacology" name="interests" 
-                        value="pharmacology" onclick="toggleButton()">
-                        <label for="pharmacology" >Pharmacology</label>
+                        <input class="radio-label" type="radio" id="medical/pharmacy" name="interests" value="medical/pharmacy"
+                          onclick="toggleButton()" title="Please select this option">
+                        <label for="medical/pharmacy">Medical/Pharmacy</label>
                       </div>
                       <div class="grid-item">
-                        <input class="radio-label" type="radio" id="agriculture" name="interests" 
-                        value="agriculture" onclick="toggleButton()">
-                        <label for="agriculture" >Agriculture</label>
+                        <input class="radio-label" type="radio" id="paramedical" name="interests" value="paramedical"
+                          onclick="toggleButton()" title="Please select this option">
+                        <label for="paramedical">Paramedical</label>
+                      </div>
+                      <div class="grid-item">
+                        <input class="radio-label" type="radio" id="agriculture" name="interests" value="agriculture"
+                          onclick="toggleButton()" title="Please select this option">
+                        <label for="agriculture">Agriculture</label>
                       </div>
                     </div>
                   </div>
@@ -180,48 +253,75 @@
                 <div class="row" style="display: none; margin-top: 50px;" id="frame_tech">
                   <div class="col-12">
 
-                      <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                          <label for="prev" class="font-weight-bold">Change Course</label>
+                    <input class="radio-label" type="radio" id="prev_t" name="interests" value="prev" style="opacity: 0;"
+                      onclick="toggleButton()">
+                    <label for="prev_t" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/technology" frameborder="1" id="frame-technology" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin-top:50px;" id="frame_admin">
                   <div class="col-12">
-                    <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                        <label for="prev" class="font-weight-bold">Change Course</label>
+                    <input class="radio-label" type="radio" id="prev_a" name="interests" value="prev" style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_a" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/administration" frameborder="1" id="frame-administration" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin-top:50px;" id="frame_finance">
                   <div class="col-12">
-                    <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                        <label for="prev" class="font-weight-bold">Change Course</label>
+                    <input class="radio-label" type="radio" id="prev_f" name="interests" value="prev"
+                    style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_f" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/finance" frameborder="1" id="frame-finance-accounting" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin-top:50px ;" id="frame_computer">
                   <div class="col-12">
-                    <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                        <label for="prev" class="font-weight-bold">Change Course</label>
+                    <input class="radio-label" type="radio" id="prev_c" name="interests" value="prev"
+                    style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_c" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/computer_app" frameborder="1" id="frame-computer-application" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin-top:50px;" id="frame_pharma">
                   <div class="col-12">
-                    <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                        <label for="prev" class="font-weight-bold">Change Course</label>
-                    <iframe src="/pharmacology" frameborder="1" id="frame-pharmacology" width="100%"></iframe>
+                    <input class="radio-label" type="radio" id="prev_p" name="interests" value="prev"
+                    style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_p" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>                    
+                    <iframe src="/medical/pharmacy" frameborder="1" id="frame-medical/pharmacy" width="100%"></iframe>
+
+                  </div>
+                </div>
+                <div class="row" style="display: none; margin-top:50px;" id="frame_para">
+                  <div class="col-12">
+                    <input class="radio-label" type="radio" id="prev_pa" name="interests" value="prev"
+                    style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_pa" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
+                    <iframe src="/paramedical" frameborder="1" id="frame-paramedical" width="100%"></iframe>
 
                   </div>
                 </div>
                 <div class="row" style="display: none; margin-top:50px;" id="frame_agri">
                   <div class="col-12">
-                    <input class="radio-label" type="radio" id="prev" name="interests" value="prev" onclick="toggleButton()">
-                        <label for="prev" class="font-weight-bold">Change Course</label>
+                    <input class="radio-label" type="radio" id="prev_ag" name="interests" value="prev"
+                    style="opacity: 0;"
+                    onclick="toggleButton()">
+                    <label for="prev_ag" class="btn-change-course">
+                      <img src="https://cdn-icons-png.flaticon.com/128/3114/3114883.png" alt="back arrow" style="height: 20px; width: 20px; margin-right: 3px;">Change Course</label>
                     <iframe src="/agriculture" frameborder="1" id="frame-agriculture" width="100%"></iframe>
 
                   </div>
@@ -233,9 +333,9 @@
                 <br>
 
                 <div class="mt-4-pt-2">
-                  <input class="btn-btn-primary-btn-lg"  type="submit" value="Submit" />
+                  <input class="btn-btn-primary-btn-lg" type="submit" value="Submit" />
                 </div>
-            <input type="hidden" id="selected-interests" name="selected_interests" value="selected_interests">
+                <input type="hidden" id="selected-interests" name="selected_interests" value="selected_interests">
               </form>
             </div>
           </div>
@@ -243,36 +343,115 @@
       </div>
     </div>
   </section>
+ \<script>
+  document.getElementById("fullName").addEventListener("input", function() {
+      validateName(this.value);
+  });
+
+  document.getElementById("email").addEventListener("input", function() {
+      validateEmail(this.value);
+  });
+
+  document.getElementById("WhatsApp_Number").addEventListener("input", function() {
+      validatePhoneNumber(this.value);
+  });
+
+  function validateName(name) {
+      var nameError = document.getElementById("nameError");
+      if (/^\D+$/.test(name)) {
+          nameError.textContent = ""; // Clear error message if name is valid
+      } else {
+          nameError.textContent = "Name should not contain digits"; // Display error message if name contains digits
+      }
+  }
+
+  function validateEmail(email) {
+      var emailError = document.getElementById("emailError");
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+          emailError.textContent = ""; // Clear error message if email is valid
+      } else {
+          emailError.textContent = "Invalid email address"; // Display error message if email is invalid
+      }
+  }
+
+  function validatePhoneNumber(phoneNumber) {
+      var phoneError = document.getElementById("phoneError");
+      var phoneno = /^[6-9]\d{9}$/;
+      if (phoneno.test(phoneNumber)) {
+          phoneError.textContent = ""; // Clear error message if phone number is valid
+      } else {
+          phoneError.textContent = "Phone number must be 10 digits and start with 6/7/8/9"; // Display error message if phone number is invalid
+      }
+  }
+</script>
   <script>
     document.getElementById("form").addEventListener("submit", function (event) {
-        event.preventDefault();
-        // Get the ID of the selected radio button
-        var crs = document.querySelector('input[name="interests"]:checked').id;
+      event.preventDefault();
+      // Get the selected interest radio button
+      var selectedInterest = document.querySelector('input[name="interests"]:checked');
 
-        // Construct the iframe ID based on the selected radio button's ID
-        var iframeID = "frame-" + crs;
+      // Check if any interest radio button is selected
+      if (!selectedInterest) {
+          alert("Please select your course interest.");
+          return; // Prevent form submission
+      }
+      // Get the ID of the selected radio button
+      var crs = document.querySelector('input[name="interests"]:checked').id;
 
-        // Get the iframe using the constructed ID
-        var iframe = document.getElementById(iframeID);
-        var iframeDocument = iframe.contentWindow.document;
-        var selectedCheckboxes = iframeDocument.querySelectorAll('input[name="interest"]:checked');
-        // Check if less than three checkboxes are selected
-        if (selectedCheckboxes.length < 3) {
-            alert("Please select at least three interests.");
-            return; // Prevent form submission
-        }
-        var selectedInterests = [];
-        selectedCheckboxes.forEach(function (checkbox) {
-            selectedInterests.push(checkbox.value);
-        });
+      // Construct the iframe ID based on the selected radio button's ID
+      var iframeID = "frame-" + crs;
 
-        // Set the value of the hidden input field to the selected interests
-        document.getElementById("selected-interests").value = selectedInterests.join(", ");
+      // Get the iframe using the constructed ID
+      var iframe = document.getElementById(iframeID);
+      var iframeDocument = iframe.contentWindow.document;
+      var selectedCheckboxes = iframeDocument.querySelectorAll('input[name="interest"]:checked');
+      // Check if less than three checkboxes are selected
+      if (selectedCheckboxes.length < 3) {
+        alert("Please select at least three interests.");
+        return; // Prevent form submission
+      }
+      var selectedInterests = [];
+      selectedCheckboxes.forEach(function (checkbox) {
+        selectedInterests.push(checkbox.value);
+      });
 
-        // Submit the form programmatically
-        document.getElementById("form").submit();
+      // Set the value of the hidden input field to the selected interests
+      document.getElementById("selected-interests").value = selectedInterests.join(", ");
+
+      // Submit the form programmatically
+      document.getElementById("form").submit();
     });
-</script>
+  </script>
+  <script>
+    var jee = document.getElementById('jee');
+    var neet = document.getElementById('neet');
+    var clat = document.getElementById('clat');
+    var cuet = document.getElementById('cuet');
+    function handleRadioVisibility1()
+    {
+      var value = document.getElementById('exam').value;
+      if(value==='JEE')
+      {
+        jee.style.display = 'grid';
+        neet.style.display = clat.style.display = cuet.style.display = 'none';
+      }
+      else if(value == 'NEET')
+      {
+        neet.style.display = 'grid';
+        jee.style.display = clat.style.display = cuet.style.display = 'none';
+      }
+      else if (value == 'CLAT')
+      {
+        clat.style.display = 'grid';
+        neet.style.display = jee.style.display = cuet.style.display = 'none';
+      }
+      else if(value == 'CUET')
+      {
+        cuet.style.display = 'grid';
+        neet.style.display = clat.style.display = jee.style.display = 'none';
+      }
+    }
+  </script>
   <script>
     function toggleButton() {
       var Change_Interest = document.getElementById('Change_Interest')
@@ -281,43 +460,49 @@
       var frame_finance = document.getElementById('frame_finance')
       var frame_computer = document.getElementById('frame_computer')
       var frame_pharma = document.getElementById('frame_pharma')
+      var frame_para = document.getElementById('frame_para')
       var frame_agri = document.getElementById('frame_agri')
       var tech = document.getElementById('technology')
       var admin = document.getElementById('administration')
       var finance = document.getElementById('finance-accounting')
       var computer = document.getElementById('computer-application')
-      var pharma = document.getElementById('pharmacology')
+      var pharma = document.getElementById('medical/pharmacy')
+      var para = document.getElementById('paramedical')
       var agri = document.getElementById('agriculture')
       var interests = document.getElementById('interests')
 
       if (tech.checked) {
         frame_tech.style.display = 'grid';
-        frame_admin.style.display=frame_finance.style.display =frame_computer.style.display=frame_pharma.style.display = frame_agri.style.display =interest.style.display ='none';
+        frame_admin.style.display = frame_finance.style.display = frame_computer.style.display = frame_pharma.style.display = frame_agri.style.display = frame_para.style.display  = interest.style.display = 'none';
       }
-      
+
       else if (admin.checked) {
-          frame_admin.style.display = 'grid';
-          frame_tech.style.display=frame_finance.style.display =frame_computer.style.display=frame_pharma.style.display = frame_agri.style.display =interest.style.display ='none';
-        } 
+        frame_admin.style.display = 'grid';
+        frame_tech.style.display = frame_finance.style.display = frame_computer.style.display = frame_pharma.style.display = frame_agri.style.display = frame_para.style.display  = interest.style.display = 'none';
+      }
       else if (finance.checked) {
-          frame_finance.style.display = 'grid';
-          frame_admin.style.display=frame_tech.style.display =frame_computer.style.display=frame_pharma.style.display = frame_agri.style.display =interest.style.display ='none';
-        } 
-        else if (computer.checked) {
-          frame_computer.style.display = 'grid';
-          frame_admin.style.display=frame_finance.style.display =frame_tech.style.display=frame_pharma.style.display = frame_agri.style.display =interest.style.display ='none';
-        }
-        else if (pharma.checked) {
-          frame_pharma.style.display = 'grid';
-          frame_admin.style.display=frame_finance.style.display =frame_computer.style.display=frame_tech.style.display = frame_agri.style.display =interest.style.display ='none';
-        }
-      else if(agri.checked) {
+        frame_finance.style.display = 'grid';
+        frame_admin.style.display = frame_tech.style.display = frame_computer.style.display = frame_pharma.style.display = frame_agri.style.display= frame_para.style.display  = interest.style.display = 'none';
+      }
+      else if (computer.checked) {
+        frame_computer.style.display = 'grid';
+        frame_admin.style.display = frame_finance.style.display = frame_tech.style.display = frame_pharma.style.display = frame_agri.style.display= frame_para.style.display  = interest.style.display = 'none';
+      }
+      else if (pharma.checked) {
+        frame_pharma.style.display = 'grid';
+        frame_admin.style.display = frame_finance.style.display = frame_computer.style.display = frame_tech.style.display = frame_agri.style.display=frame_para.style.display  = interest.style.display = 'none';
+      }
+      else if (para.checked) {
+        frame_para.style.display = 'grid';
+        frame_admin.style.display = frame_finance.style.display = frame_computer.style.display = frame_tech.style.display = frame_agri.style.display = interest.style.display = 'none';
+      }
+      else if (agri.checked) {
         frame_agri.style.display = 'grid';
-        frame_admin.style.display=frame_finance.style.display =frame_computer.style.display=frame_pharma.style.display = frame_tech.style.display =interest.style.display ='none';
+        frame_admin.style.display = frame_finance.style.display = frame_computer.style.display = frame_pharma.style.display = frame_tech.style.display =frame_para.style.display = interest.style.display = 'none';
       }
       else {
         interest.style.display = 'grid';
-        frame_admin.style.display=frame_finance.style.display =frame_computer.style.display=frame_pharma.style.display = frame_agri.style.display =frame_tech.style.display ='none';
+        frame_admin.style.display = frame_finance.style.display = frame_computer.style.display = frame_pharma.style.display = frame_para.style.display = frame_agri.style.display = frame_tech.style.display = 'none';
       }
     }
 
@@ -329,58 +514,131 @@
     // Get all radio buttons
     var radioButtons = document.querySelectorAll('input[name="interests"]');
 
-    // Show all radio buttons by default
-    radioButtons.forEach(function(radio) {
-        radio.style.display = "inline";
+    // Disable all radio buttons by default
+    radioButtons.forEach(function (radio) {
+        radio.disabled = true;
     });
 
-    // Adjust visibility based on branch_12 and per_12
+    // Adjust visibility and disable state based on branch_12 and per_12
     if (per_12 >= 50) {
         if (branch_12 === "PCM") {
-            // Hide Pharmacology and make other radio buttons inline
-            document.getElementById("pharmacology").style.display = "none";
-        } else if (branch_12 === "PCB") {
-            // Hide Computer Application and make other radio buttons inline
-            document.getElementById("computer-application").style.display = "none";
-            document.getElementById("technology").style.display = "none";
-        } else if (branch_12 === "Commerce") {
-            // Hide Technology and Pharmacology, make other radio buttons inline
-            document.getElementById("technology").style.display = "none";
-            document.getElementById("pharmacology").style.display = "none";
-        } else if (branch_12 === "Arts") {
-            // Hide Technology, Administration, Pharmacology, make other radio buttons inline
-            document.getElementById("technology").style.display = "none";
-            document.getElementById("administration").style.display = "none";
-            document.getElementById("pharmacology").style.display = "none";
+          radioButtons.forEach(function (radio) {
+          radio.disabled = false;
+          });
+            document.getElementById("medical/pharmacy").disabled = true;
+            document.getElementById("paramedical").disabled = true;
+        } if (branch_12 === "PCB") {
+          radioButtons.forEach(function (radio) {
+          radio.disabled = false;
+          });
+            document.getElementById("computer-application").disabled = true;
+            document.getElementById("technology").disabled = true;
+        } if (branch_12 === "Commerce") {
+            radioButtons.forEach(function (radio) {
+            radio.disabled = false;
+            });
+            document.getElementById("technology").disabled = true;
+            document.getElementById("medical/pharmacy").disabled = true;
+            document.getElementById("paramedical").disabled = true;
+            document.getElementById("computer-application").disabled = true;
+        } if (branch_12 === "Arts") {
+            radioButtons.forEach(function (radio) {
+            radio.disabled = false;
+            });
+            document.getElementById("technology").disabled = true;
+            document.getElementById("administration").disabled = true;
+            document.getElementById("medical/pharmacy").disabled = true;
+            document.getElementById("paramedical").disabled = true;
+            document.getElementById("computer-application").disabled = true;
         }
-    } else if (per_12 >= 50 && per_12 < 60) {
-        // Hide BCA and make other radio buttons inline
-        document.getElementById("computer-application").style.display = "none";
-        
-    } else if (per_12 >= 45 && per_12 < 50) {
-        // Hide BBA, Technology, Pharmacology, make other radio buttons inline
-        document.getElementById("administration").style.display = "none";
-        document.getElementById("technology").style.display = "none";
-        document.getElementById("pharmacology").style.display = "none";
-    } else {
-        // Hide all radio buttons and display message
-        radioButtons.forEach(function(radio) {
-            radio.style.display = "none";
-        });
-        document.getElementById("message").innerText = "Sorry, Not applicable";
+    } if (per_12 >= 50 && per_12 < 60) {
+        document.getElementById("computer-application").disabled = true;
+        document.getElementById("paramedical").disabled = true;
+    } if (per_12 >= 45 && per_12 < 50) {
+          
+        document.getElementById("administration").disabled = true;
+        document.getElementById("technology").disabled = true;
+        document.getElementById("medical/pharmacy").disabled = true;
     }
+    if(per_12 === 0){
+          radioButtons.forEach(function (radio) {
+          radio.disabled = false;
+          });
+    }
+
 }
+function hideTextField() {
+    var branch_12 = document.getElementById("12th_branch").value;
+    var textField = document.getElementById("exam").closest(".col-md-6");
+
+    // Check if the branch is "Arts" or "Commerce"
+    if (branch_12 === "Arts" || branch_12 === "Commerce") {
+        // Hide the text field
+        textField.style.display = "none";
+    } else {
+        // Show the text field
+        textField.style.display = "block";
+    }
+    var value = document.getElementById('exam').value;
+      if(value==='JEE')
+      {
+        jee.style.display = 'none';
+        neet.style.display = clat.style.display = cuet.style.display = 'none';
+      }
+      else if(value == 'NEET')
+      {
+        neet.style.display = 'none';
+        jee.style.display = clat.style.display = cuet.style.display = 'none';
+      }
+      else if (value == 'CLAT')
+      {
+        clat.style.display = 'none';
+        neet.style.display = jee.style.display = cuet.style.display = 'none';
+      }
+      else if(value == 'CUET')
+      {
+        cuet.style.display = 'none';
+        neet.style.display = clat.style.display = jee.style.display = 'none';
+      }
+}
+// Add an event listener to the branch select element
+document.getElementById("12th_branch").addEventListener("change", function() {
+    // Call the hideTextField function when the branch value changes
+    hideTextField();
+});
 
 // Add event listener to trigger visibility change on input change
 document.getElementById("12th_marks").addEventListener("input", handleRadioVisibility);
 
-// Add event listeners to radio buttons
-document.querySelectorAll('input[name="interest"]').forEach(function(radio) {
-    radio.addEventListener("click", handleRadioVisibility);
-});
-
 // Initial visibility check
 handleRadioVisibility();
+function hideExamOptions() {
+    var branchValue = document.getElementById("12th_branch").value;
+    var examOptions = document.getElementById("exam").getElementsByTagName("option");
+
+    // Iterate through each option and hide options based on the branch value
+    for (var i = 0; i < examOptions.length; i++) {
+        var optionValue = examOptions[i].value;
+        
+        if (branchValue === "PCM" && optionValue === "NEET") {
+            examOptions[i].style.display = "none";
+        } else if (branchValue === "PCB" && optionValue === "JEE") {
+            examOptions[i].style.display = "none";
+        } else {
+            examOptions[i].style.display = "block"; // Display all other options
+        }
+    }
+}
+
+// Add an event listener to the 12th branch select element
+document.getElementById("12th_branch").addEventListener("change", function() {
+    // Call the hideExamOptions function when the branch value changes
+    hideExamOptions();
+});
+
+// Call hideExamOptions initially to set the initial visibility based on the branch value
+hideExamOptions();
+
   </script>
 
 </body>
