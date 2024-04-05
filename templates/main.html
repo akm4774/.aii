@@ -205,7 +205,7 @@
             </div>
             <div id="branch-insight" class="content-item">
                 <h1>Branch Insight</h1>
-                <p>{{ insight }}</p>
+                <p>{{ insight | safe  }}</p>
             </div>
             <div id="branch-graph" class="content-item">
                 <img src="{{ graph }}" alt="">

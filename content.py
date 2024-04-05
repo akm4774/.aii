@@ -11,7 +11,7 @@ branchContent = {
         "content": "Bachelor of Commerce (BCom) in Retail Management is a specialized program that combines commerce principles with retail expertise. Students learn about retail operations, merchandising, and customer service. This program prepares graduates for careers in retail management, marketing, and sales, providing a blend of business acumen and retail-specific knowledge for success in the dynamic retail industry.",
         "image": "static/images/HonsRetailManagement.jpg"
     },
-    "Bachelor of Business Administration(BBA)": {
+    "Bachelor of Business Administration (BBA)": {
         "content": "BBA LLB is a comprehensive five-year integrated program combining law and business administration, covering CORPORATE LAW, CONTRACT LAW, FINANCE, and MANAGEMENT. Graduates develop skills in LEGAL ANALYSIS, BUSINESS ACUMEN, and COMMUNICATION, preparing for careers in LEGAL PRACTICE, CORPORATE LAW, BUSINESS CONSULTING, and ENTREPRENEURSHIP. Job prospects include positions as LEGAL ADVISORS, CORPORATE COUNSEL, BUSINESS CONSULTANTS, and ENTREPRENEURS, contributing to INNOVATION, COMPLIANCE, and ETHICAL BUSINESS PRACTICES in India's dynamic economy.",
         "image": "static/images/bba.jpg"
     },

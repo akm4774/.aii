@@ -109,6 +109,9 @@ def submit_form():
         session['b2'] = b2
     if b3:
         session['b3'] = b3
+    # Replace \n with <br> tags in branch_content
+    insight = insight.replace('\n', '<br>')
+
     return render_template('main.html', 
                            b1=b1, b2=b2, b3=b3,
                            full_name=full_name, 
@@ -139,6 +142,7 @@ def branch_b2():
     branch_data = get_branch_data(b2)
     if branch_data:
         branch_content, branch_image, insight, graph = branch_data
+        insight = insight.replace('\n', '<br>')
         return render_template('main.html', 
                                b1=b2, b2=b1, b3=b3, 
                                branch_content=branch_content, 
@@ -167,6 +171,7 @@ def branch_b3():
     form_data = session.get('form_data', {})
     if branch_data:
         branch_content, branch_image, insight, graph = branch_data
+        insight = insight.replace('\n', '<br>')
         return render_template('main.html', 
                                b1=b3, b2=b2, b3=b1, 
                                branch_content=branch_content, 
