@@ -9,7 +9,7 @@ insights = {
     },
     "BCom-Ecommerce & Retail Managment": {
         "insight": "Bachelor of Commerce (BCom) in Retail Management is a specialized program that combines commerce principles with retail expertise. Students learn about retail operations, merchandising, and customer service. This program prepares graduates for careers in retail management, marketing, and sales, providing a blend of business acumen and retail-specific knowledge for success in the dynamic retail industry.",
-        "graph": ""
+        "graph": "static/graphs/BCOM-ERM.png"
     },
     "Bachelor of Business Administration (BBA)": {
         "insight": "1. Technology Integration: The BBA program incorporates technology-focused courses to prepare students with literacy and proficiency in business analytics tools and platforms.\n2. Data Action Decision Making: By focusing on data analysis and interpretation, students can use big data to make decisions while driving business strategies.\n3. Digital Marketing Education - The BBA program provides expertise in digital marketing covering topics such as SEO, social media marketing, and online advertising to meet the needs of the digital market.\n4. E-Commerce and Entrepreneurship: Students learn about e-commerce trends and strategies, as well as the entrepreneurial skills needed to start and run an online business.\n5. Industry Partnerships: Collaborate with industry partners to bridge the gap between academia and the corporate world by providing students with internships, career programs, and internship opportunities.\n6. Global Business Perspective: The BBA program offers a global business perspective, preparing students to navigate global markets and cultural differences in an interconnected world. knowledge, skills, and thinking. Businesses and entrepreneurs must succeed in the digital age.",
@@ -17,7 +17,7 @@ insights = {
     },
     "Bachelor of Business Administration with Data  Analytics (BBA-DA)": {
         "insight": "1. Data Analytics Integration: BBA programs incorporate data analytics courses to teach students how to collect, analyze, and interpret data for informed business decisions.\n2. Business Intelligence Tools: Students learn to use tools for data visualization and predictive analytics, enabling them to extract insights from data.\n3. Quantitative Analysis Skills: Emphasis is placed on understanding statistical methods and hypothesis testing for deriving meaningful conclusions from data.\n4. Strategic Decision Making: BBA programs teach students to use data-driven insights for strategic decision making, fostering critical thinking in a business context.\n5. Industry-Relevant Projects: Students apply data analytics techniques to real-world business scenarios, gaining practical experience through projects and case studies.\n6. Ethical Data Practices: Programs address ethical considerations in data analytics, stressing the importance of privacy and security in handling data.",
-        "graph": ""
+        "graph": "static/graphs/BBA-DS.png"
     },
     "Bachelor of Commerce (BCom)": {
         "insight": "1. Digital Transformation: BCom programs will evolve to incorporate more courses on digital skills such as data analysis, e-commerce management, and digital marketing, reflecting the increasing importance of technology in the business world.\n2. Data Analytics Integration: There will be a greater emphasis on data analytics and business intelligence, with BCom students learning how to analyze large datasets to derive actionable insights for strategic decision-making.\n3. Globalization Focus: BCom programs will expand their focus on globalization and international business, offering courses on global supply chain management, cross-cultural communication, and international finance to prepare students for careers in a globalized economy.\n4. Sustainability and Ethics: There will be a growing emphasis on sustainability and ethics in business, with BCom programs incorporating courses on corporate social responsibility, ethical leadership, and sustainable business practices to address pressing environmental and social issues.\n5. Entrepreneurship Support: BCom programs will provide more support for entrepreneurship and innovation, offering courses on business planning, startup management, and venture capital to nurture the next generation of business leaders and innovators.",
@@ -25,11 +25,11 @@ insights = {
     },
     "Bachelor of Commerce with Honours (BCom-HON)": {
         "insight": "1. Specialized Curriculum Expansion: BCom Honours programs will offer advanced courses in Financial Analysis, Marketing Strategy, and Corporate Governance to provide students with specialized expertise.\n2. Advanced Data Analytics Integration: master advanced statistical techniques, predictive modeling, and data visualization tools for complex business data analysis.\n3. Internationalization Initiatives: BCom Honours will focus on global internships, exchange programs, and cross-cultural learning to prepare students for the global marketplace.\n4. Ethical Leadership Development: Emphasis will be placed on ethical decision-making, corporate social responsibility, and sustainable business practices to nurture ethical leadership qualities.\n5. Entrepreneurship and Innovation Support: Enhanced support for entrepreneurship will include mentorship programs, incubator spaces, and funding opportunities to foster innovation among students.",
-        "graph": "/static/images/bcomHons.jpg"
+        "graph": "/static/graphs/BCOM-HONS.png"
     },
     "Bachelor of Computer Applications (BCA)": {
         "insight": "1. Advanced AI and Data Analytics: BCA programs will offer advanced courses in AI and data analytics to meet industry demands.\n2. Interdisciplinary Integration: Integration with other fields like healthcare and finance will provide practical applications.\n3. Industry Collaboration: Strengthened ties with industry for internships and projects will enhance practical learning.\n4. Ethical AI Education: Students will learn about the ethical implications of AI technologies.\n5. Entrepreneurship Focus: BCA programs will foster entrepreneurship through support services and courses, encouraging innovation.",
-        "graph": "static/graphs/BCA-DataSc.png"
+        "graph": "static/graphs/BCA-DS.png"
     },
     "Bachelor of Dental Surgery(BDS)": {
         "insight": "1. Technological Integration: BDS programs will integrate advanced technologies like 3D printing, CAD/CAM, and virtual reality for enhanced diagnosis, treatment planning, and patient care.\n2. Interdisciplinary Collaboration: Collaboration with other healthcare disciplines such as medicine, engineering, and psychology will lead to holistic patient care approaches and innovative treatment methodologies.\n3. Specialization Expansion: There will be an expansion of specialized fields within dentistry, such as orthodontics, endodontics, and periodontics, to meet the diverse needs of patients and address evolving dental health challenges.\n4. Global Health Initiatives: BDS programs will focus on global health initiatives, providing students with opportunities for international outreach programs, volunteer work, and research collaborations to address oral health disparities worldwide.\n5. Tele-dentistry Adoption: The adoption of tele-dentistry will enable remote consultations, patient monitoring, and education, improving access to dental care in underserved areas and facilitating continuity of care during emergencies.",
@@ -45,7 +45,7 @@ insights = {
     },
     "Bachelor of Pharmacy (BPHARMA)": {
         "insight": "1. Technology Integration: Incorporation of cutting-edge technologies like personalized medicine and biopharmaceuticals to revolutionize drug discovery and delivery.\n2. Clinical Pharmacy Emphasis: Focus on medication therapy management and patient-centered care for optimal therapeutic outcomes.\n3. Interdisciplinary Collaboration: Collaborations with medicine, nursing, and public health to facilitate holistic patient management.\n4. Regulatory Compliance: Priority on adhering to Good Manufacturing Practice (GMP) standards and pharmacoeconomic principles for product safety and efficacy.\n5. Innovation and Research: Increased emphasis on pharmaceutical research to drive advancements in drug development and formulation.",
-        "graph": "static/graphs/BPharm.png"
+        "graph": "static/graphs/BPHARMA.png"
     },
     "Bachelor of Physiotherapy (BPT)": {
         "insight": "1. Advanced Techniques Integration: BPT programs will integrate advanced physiotherapy techniques like manual therapy and therapeutic exercises to enhance patient rehabilitation.\n2. Specialization Opportunities: Students will have more specialization options such as sports physiotherapy and neurorehabilitation to address diverse patient needs.\n3. Interdisciplinary Collaboration: Collaboration with orthopedics, neurology, and sports medicine will enable comprehensive patient care approaches.\n4. Technology Adoption: Adoption of wearable devices and tele-rehabilitation platforms will improve therapy effectiveness and personalization.\n5. Community Outreach Initiatives: BPT programs will focus on community outreach, offering free or low-cost services to underserved populations, promoting overall health and well-being.",
@@ -57,7 +57,7 @@ insights = {
     },
     "Bachelor of Science(Nursing)": {
         "insight": "Nursing is a highly rewarding profession focused on providing compassionate care to people at all stages of life. This includes a wide range of tasks, from administering medications and monitoring vital signs to providing emotional support and advocating for patient health. If you have a passion for helping others and succeeding in a dynamic, fast-paced environment, nursing may be right for you. We offer a variety of career opportunities in hospitals, clinics, schools, and more, allowing you to make a meaningful difference in people's lives every day. Nursing combines science, empathy, and critical thinking, making it an incredibly fulfilling and impactful career choice.",
-        "graph": ""
+        "graph": "static/graphs/BSN.png"
     },
     "CSE-Artificial Intelligence and Data Science (AIDS)": {
         "insight": "Engineering in Artificial Intelligence and Data Science is a four years undergraduate course that deals with core technologies like Machine learning, Artificial Intelligence, Data warehouse, Data mining, Scripting language, Product development, Mathematical modeling. It also involves skills like big data analytics, fuzzy technologies, artificial neural networks, etc.",
@@ -69,11 +69,11 @@ insights = {
     },
     "CSE-Cyber Security (CY)": {
         "insight": "B.Tech in Cyber Security is a 4-year undergraduate degree that focuses on thorough understanding of topics like Intrusion Detection and Prevention Systems, Network Security, Design and Analysis of Algorithms, Cryptography, and Cyber Crime. The course guides the students in maintaining digital records or conducting investigations to determine who was involved in performing prohibited tasks. The B.Tech Course in Cyber Security is ideal for candidates who are interested in learning more about the sophisticated threat intelligence used in the cybersecurity field and who want to enhance their understanding of malware reverse engineering, penetration testing, and cyber forensics.",
-        "graph": "static/graphs/CYBER.png"
+        "graph": "static/graphs/CY.png"
     },
     "CSE-Data Science (DS)": {
         "insight": "The B.Tech (CSE) - Data Science & Analytics program, focuses on interdisciplinary data science and analytics. The program combines data inference, algorithm development, and technology to solve complex problems. It imparts skills in mathematical expertise, technology hacking, and business strategy. The program focuses on using data to generate business value and make smarter decisions.",
-        "graph": "static/graphs/DATASc.png"
+        "graph": "static/graphs/DS.png"
     },
     "CSE-Internet of Things (IOT)": {
         "insight": "The B.Tech in Computer Science in IOT program provides a solid foundation in wireless communication and computer networks, equipping students with skills in sensor network design and network planning for IoT. The program aims to equip students with systematic professional knowledge and practical skills in computer technology communications networks and IT, providing a wide range of applications in the Internet of Things.",
@@ -97,7 +97,7 @@ insights = {
     },
     "Medical Technician": {
         "insight": "Medical technology is at the forefront of healthcare innovation, merging science and technology to support medical professionals in diagnosis, treatment, and patient care. As a medical technician, you'll play a vital role in laboratory settings, conducting tests, analyzing samples, and operating medical equipment to aid in disease detection and monitoring. This field offers a dynamic environment where you'll contribute directly to patient well-being and collaborate closely with healthcare teams. If you're passionate about science, enjoy hands-on work, and aspire to make a difference in people's lives through healthcare advancements, pursuing a career as a medical technician can be both fulfilling and impactful.",
-        "graph": ""
+        "graph": "static/graphs/MT.png"
     },
     "Electrical Engineering (EE)": {
         "insight": "Electrical engineering is the study and use of electricity, electronics, and electromagnetism, which serves as the foundation for modern technology. From building power systems to inventing cutting-edge electronics, this profession provides limitless chances for innovation and shaping the future. If you're fascinated by how things function, enjoy problem-solving, and have a strong interest in technology, electrical engineering is a great fit. It's a dynamic field in which you may help expand renewable energy, telecommunications, automation, and other areas, thereby making a tangible difference in society's progress.",

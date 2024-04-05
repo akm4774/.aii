@@ -40,6 +40,8 @@ def train_model(data):
 def predict_top_unique_branches(user_interest, user_rank=None, top_n=3, course=None):
     user_interests = preprocess_interests(user_interest)
     course = preprocess_course(course)
+    if course.lower() not in ['medical/pharmacy', 'technology']:
+        user_rank = None
 
     data = load_data("static/data-final.csv")
     filtered_data = data if course is None else data[data['Course'].str.lower() == course.lower()]

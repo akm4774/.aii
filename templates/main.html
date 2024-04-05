@@ -208,7 +208,7 @@
                 <p>{{ insight | safe  }}</p>
             </div>
             <div id="branch-graph" class="content-item">
-                <img src="{{ graph }}" alt="">
+                <img src="{{ graph }}" alt="graph" style="height: 100%; width: 100%;">
             </div>
         </div>
         {{super()}}  
@@ -229,7 +229,7 @@
                 examRankLabel.textContent = "NEET Rank:";
             }
             else {
-                examRankLabel.textContent = "CUET Rank:";
+                examRankLabel.textContent = "";
             }
         });
     </script>
