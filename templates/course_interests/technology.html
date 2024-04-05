@@ -42,7 +42,7 @@ ul.ks-cboxtags li label{
 }
 
 ul.ks-cboxtags li label {
-    padding: 8px 10px;
+    padding: 8px 8px;
     cursor: pointer;
 }
 
@@ -89,12 +89,12 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     
   }
 }
-@media screen and (max-width:500px) {
+@media screen and (max-width:600px) {
   .container11 ul{
     grid-template-columns:1fr 1fr;
   }
 }
-@media screen and (max-width:420px) {
+@media screen and (max-width:460px) {
   .container11 ul{
     grid-template-columns:1fr;
   }
@@ -143,10 +143,35 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 
                 </ul>  
               </div>
-
+              <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p id="errorMessage"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div id="error-message" style="display: none; color: red;">Please Select only five options.</div>
             </form>
+            <!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="...">
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="..." crossorigin="anonymous"></script>
+
             <script>
+              // Bootstrap Modal for displaying error message
+function showError(message) {
+    $('#errorMessage').text(message);
+    $('#errorModal').modal('show');
+}
+
               // Get all checkboxes
               var checkboxes = document.querySelectorAll('input[name="interest"]');
               // Initialize counter for selected checkboxes
@@ -166,7 +191,10 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
                           // If count is already 5, prevent checking the checkbox
                           this.checked = false;
                           // Display alert
-                          alert("You can only select up to 5 checkboxes.");
+                          // document.getElementById('error-message').style.display = 'block';
+                          // alert("You can only select up to 5 checkboxes.");
+                          showError("This is an error message!");
+
                       }
                   });
               });

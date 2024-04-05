@@ -41,7 +41,7 @@ def predict_top_unique_branches(user_interest, user_rank=None, top_n=3, course=N
     user_interests = preprocess_interests(user_interest)
     course = preprocess_course(course)
 
-    data = load_data("static/updatedsheet.csv")
+    data = load_data("static/data-final.csv")
     filtered_data = data if course is None else data[data['Course'].str.lower() == course.lower()]
 
     dataset_interests = set(filtered_data['Interest'].str.lower().str.split(',').explode().unique())
