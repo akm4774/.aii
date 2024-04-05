@@ -123,12 +123,11 @@ def submit_form():
                            branch_image=branch_image,
                            insight=insight,
                            graph=graph)
-@app.route('/roadmap')
-def roadmap():
+@app.route('/roadmap/<branch>')
+def roadmap(branch):
     # Retrieve 'b1' from the session
-    b1 = session.get('b1', '')
-    roadmap_data = roadmaps.get(b1, {})  # Get the roadmap data for the branch
-    return render_template('roadmap.html', b1 = b1, roadmapData=roadmap_data, roadmaps = roadmaps)
+    roadmap_data = roadmaps.get(branch, {})  # Get the roadmap data for the branch
+    return render_template('roadmap.html', b1 = branch, roadmapData=roadmap_data, roadmaps = roadmaps)
 # Call the function from model.py to predict top unique branches
 @app.route('/b2')
 def branch_b2():

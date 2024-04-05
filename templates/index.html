@@ -30,6 +30,7 @@
                     <div class="form-outline">
                       <label class="form-label font-weight-bold" for="fullName">Full Name</label>
                       <input type="text" id="fullName" class="form-control form-control-lg" name="Full_name" pattern="[A-Za-z][A-Za-z\s]*" title="Name should not contain digits." required />
+                      <div id="nameError" class="text-danger"></div>
                     </div>
 
                   </div>
@@ -38,7 +39,7 @@
                     <div class="form-outline">
                       <label class="form-label font-weight-bold" for="email">Email</label>
                       <input type="email" id="email" class="form-control form-control-lg" name="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address." required />
-
+                      <div id="emailError" class="text-danger"></div>
                     </div>
 
                   </div>
@@ -47,6 +48,7 @@
                       <label class="form-label font-weight-bold" for="WhatsApp_Number">WhatsApp Number</label>
                       <input type="text" id="WhatsApp_Number" class="form-control form-control-lg" name="WhatsApp_Number" pattern="[6-9]\d{9}" title="Please enter a valid WhatsApp number." required />
                       <!-- <label for="family_income" class="form-label label">Please enter income in rupees</label> -->
+                      <div id="phoneError" class="text-danger"></div>
                     </div>
 
                   </div>
@@ -340,6 +342,47 @@
       </div>
     </div>
   </section>
+ \<script>
+  document.getElementById("fullName").addEventListener("input", function() {
+      validateName(this.value);
+  });
+
+  document.getElementById("email").addEventListener("input", function() {
+      validateEmail(this.value);
+  });
+
+  document.getElementById("WhatsApp_Number").addEventListener("input", function() {
+      validatePhoneNumber(this.value);
+  });
+
+  function validateName(name) {
+      var nameError = document.getElementById("nameError");
+      if (/^\D+$/.test(name)) {
+          nameError.textContent = ""; // Clear error message if name is valid
+      } else {
+          nameError.textContent = "Name should not contain digits"; // Display error message if name contains digits
+      }
+  }
+
+  function validateEmail(email) {
+      var emailError = document.getElementById("emailError");
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+          emailError.textContent = ""; // Clear error message if email is valid
+      } else {
+          emailError.textContent = "Invalid email address"; // Display error message if email is invalid
+      }
+  }
+
+  function validatePhoneNumber(phoneNumber) {
+      var phoneError = document.getElementById("phoneError");
+      var phoneno = /^[6-9]\d{9}$/;
+      if (phoneno.test(phoneNumber)) {
+          phoneError.textContent = ""; // Clear error message if phone number is valid
+      } else {
+          phoneError.textContent = "Phone number must be 10 digits and start with 6/7/8/9"; // Display error message if phone number is invalid
+      }
+  }
+</script>
   <script>
     document.getElementById("form").addEventListener("submit", function (event) {
       event.preventDefault();
