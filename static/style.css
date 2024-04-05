@@ -314,3 +314,26 @@ p {
         height: 1600px;
     }
 }
+@media screen and (max-width:350px) {
+
+    #frame_pharma iframe {
+        height: 580px;
+    }
+
+    #frame_para iframe {
+        height: 650px;
+    }
+
+    #frame_computer iframe {
+        height: 600px;
+    }
+
+    #frame_finance iframe {
+        height: 730px;
+    }
+
+    #frame_admin iframe {
+        height: 430px;
+    }
+    
+}
