@@ -72,8 +72,15 @@
                   <div class="col-md-6">
                     <div class="form-outline">
                       <label class="form-label font-weight-bold" for="family_income">Family Income</label>
-                      <input type="number" id="family_income" class="form-control form-control-lg" name="Family_income"
-                        required />
+                      <!-- <input type="number" id="family_income" class="form-control form-control-lg" name="Family_income"
+                        required /> -->
+                        <select class="form-control-lg form-control" id="family_income" name="Family_income">
+                          <option value="" disabled selected>Income Range (in Lakhs)</option>
+                          <option value="0-1">0 - 1 Lakhs</option>
+                          <option value="1-3">1 - 3 Lakhs</option>
+                          <option value="3-5">3 - 5 Lakhs</option>
+                          <option value="5+">5+ Lakhs</option>
+                      </select>
                       <!-- <label for="family_income" class="form-label label">Please enter income in rupees</label> -->
 
                     </div>
@@ -162,6 +169,7 @@
                         <option value="" disabled selected>Select an option</option>
                         <option value="JEE">JEE</option>
                         <option value="NEET">NEET</option>
+                        <option value="LNCT_CET">LNCT CET</option>
                         <option value="CLAT">CLAT</option>
                         <option value="CUET">CUET</option>
                       </select>
@@ -182,6 +190,15 @@
                       <label class="form-label font-weight-bold" for="neet_rank">NEET Rank</label>
                       <input type="number" id="neet_rank" class="form-control form-control-lg" name="neet_rank" />
                       <label for="neet_rank" class="form-label label">Please enter rank in numbers</label>
+
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 pb-2" style="display: none;" id="lnct-cet">
+                    <div class="form-outline">
+                      <label class="form-label font-weight-bold" for="lnct-cet">LNCT-CET Rank</label>
+                      <input type="number" id="lnct-cet" class="form-control form-control-lg" name="lnct-cet" />
+                      <label for="lnct-cet" class="form-label label">Please enter rank in numbers</label>
 
                     </div>
 
@@ -207,6 +224,7 @@
 
                 </div>
                 <p class="help-text">Please select a stream and enter your 12th percentage to enable the interests selection.</p>
+
                 <div class="row" id="interest">
                   <div class="col-12">
                     <label for="interest" class="interest font-weight-bold">Interests</label required><br>
@@ -214,38 +232,52 @@
 
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="technology" name="interests" value="technology"
-                          onclick="toggleButton()" title="Please select this option">
-                        <label for="technology">Technical/Engineering</label>
+                        onclick="toggleButton()" title="Please select this option">
+                        <label for="technology" style="cursor: pointer;">
+                          <img src="../static/images/touchscreen.png" alt="" style="height:17px;" id="tech">
+                          Technical/Engineering</label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="administration" name="interests"
-                          value="administration" onclick="toggleButton()" title="Please select this option">
-                        <label for="administration">Business Administration </label>
+                        value="administration" onclick="toggleButton()" title="Please select this option">
+                        <label for="administration" style="cursor: pointer;">
+                          <img src="../static/images/touchscreen.png" alt="" style="height:17px;" id="ad">
+                          Business Administration </label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="finance-accounting" name="interests"
-                          value="finance-accounting" onclick="toggleButton()" title="Please select this option">
-                        <label for="finance-accounting">Finance & Accounting</label><br>
+                        value="finance-accounting" onclick="toggleButton()" title="Please select this option">
+                        <label for="finance-accounting" style="cursor: pointer;">
+                          <img src="../static/images/touchscreen.png" alt="" style="height:17px;" id="F&A">
+                          Finance & Accounting</label><br>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="computer-application" name="interests"
-                          value="computer-application" onclick="toggleButton()" title="Please select this option">
-                        <label for="computer-application">Computer Application</label>
+                        value="computer-application" onclick="toggleButton()" title="Please select this option">
+                        <label for="computer-application" style="cursor: pointer;">
+                          <img src="../static/images/touchscreen.png" alt="" style="height:17px;" id="CA">
+                          Computer Application</label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="medical/pharmacy" name="interests" value="medical/pharmacy"
-                          onclick="toggleButton()" title="Please select this option">
-                        <label for="medical/pharmacy">Medical/Pharmacy</label>
+                        onclick="toggleButton()" title="Please select this option">
+                        <label for="medical/pharmacy" style="cursor: pointer;">
+                          <img src="../static/images/touchscreen.png" alt="" style="height:17px;" id="M&P">
+                          Medical/Pharmacy</label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="paramedical" name="interests" value="paramedical"
-                          onclick="toggleButton()" title="Please select this option">
-                        <label for="paramedical">Paramedical</label>
+                        onclick="toggleButton()" title="Please select this option">
+                        <label for="paramedical" style="cursor: pointer;">
+                          <img src="../static/images/touchscreen.png" alt="" style="height:17px;" id="PA">
+                          Paramedical</label>
                       </div>
                       <div class="grid-item">
                         <input class="radio-label" type="radio" id="agriculture" name="interests" value="agriculture"
-                          onclick="toggleButton()" title="Please select this option">
-                        <label for="agriculture">Agriculture</label>
+                        onclick="toggleButton()" title="Please select this option">
+                        <label for="agriculture" style="cursor: pointer;">
+                          <img src="../static/images/touchscreen.png" alt="" style="height:17px;" id="Ag">
+                          Agriculture</label>
                       </div>
                     </div>
                   </div>
@@ -343,7 +375,7 @@
       </div>
     </div>
   </section>
- \<script>
+ <script>
   document.getElementById("fullName").addEventListener("input", function() {
       validateName(this.value);
   });
@@ -425,6 +457,7 @@
   <script>
     var jee = document.getElementById('jee');
     var neet = document.getElementById('neet');
+    var lnct_cet = document.getElementById('lnct-cet');
     var clat = document.getElementById('clat');
     var cuet = document.getElementById('cuet');
     function handleRadioVisibility1()
@@ -433,22 +466,27 @@
       if(value==='JEE')
       {
         jee.style.display = 'grid';
-        neet.style.display = clat.style.display = cuet.style.display = 'none';
+        neet.style.display = lnct_cet.style.display = clat.style.display = cuet.style.display = 'none';
       }
       else if(value == 'NEET')
       {
         neet.style.display = 'grid';
-        jee.style.display = clat.style.display = cuet.style.display = 'none';
+        jee.style.display = lnct_cet.style.display = clat.style.display = cuet.style.display = 'none';
+      }
+      else if(value == 'LNCT_CET')
+      {
+        lnct_cet.style.display = 'grid';
+        jee.style.display = neet.style.display = clat.style.display = cuet.style.display = 'none';
       }
       else if (value == 'CLAT')
       {
         clat.style.display = 'grid';
-        neet.style.display = jee.style.display = cuet.style.display = 'none';
+        neet.style.display = lnct_cet.style.display = jee.style.display = cuet.style.display = 'none';
       }
       else if(value == 'CUET')
       {
         cuet.style.display = 'grid';
-        neet.style.display = clat.style.display = jee.style.display = 'none';
+        neet.style.display = lnct_cet.style.display = clat.style.display = jee.style.display = 'none';
       }
     }
   </script>
@@ -526,37 +564,55 @@
           radio.disabled = false;
           });
             document.getElementById("medical/pharmacy").disabled = true;
+            document.getElementById("M&P").style.display = "none";
+            document.getElementById("PA").style.display = "none";
             document.getElementById("paramedical").disabled = true;
         } if (branch_12 === "PCB") {
           radioButtons.forEach(function (radio) {
           radio.disabled = false;
           });
             document.getElementById("computer-application").disabled = true;
+            document.getElementById("CA").style.display = "none";
+            document.getElementById("tech").style.display = "none";
             document.getElementById("technology").disabled = true;
         } if (branch_12 === "Commerce") {
             radioButtons.forEach(function (radio) {
             radio.disabled = false;
             });
             document.getElementById("technology").disabled = true;
+            document.getElementById("tech").style.display = "none";
             document.getElementById("medical/pharmacy").disabled = true;
+            document.getElementById("M&P").style.display = "none";
             document.getElementById("paramedical").disabled = true;
+            document.getElementById("PA").style.display = "none";
             document.getElementById("computer-application").disabled = true;
+            document.getElementById("CA").style.display = "none";
         } if (branch_12 === "Arts") {
             radioButtons.forEach(function (radio) {
             radio.disabled = false;
             });
             document.getElementById("technology").disabled = true;
+            document.getElementById("tech").style.display = "none";
+            document.getElementById("ad").style.display = "none";
             document.getElementById("administration").disabled = true;
             document.getElementById("medical/pharmacy").disabled = true;
+            document.getElementById("M&P").style.display = "none";
+            document.getElementById("PA").style.display = "none";
+            document.getElementById("CA").style.display = "none";
             document.getElementById("paramedical").disabled = true;
             document.getElementById("computer-application").disabled = true;
         }
     } if (per_12 >= 50 && per_12 < 60) {
         document.getElementById("computer-application").disabled = true;
+        document.getElementById("CA").style.display = "none";
+        document.getElementById("PA").style.display = "none";
         document.getElementById("paramedical").disabled = true;
     } if (per_12 >= 45 && per_12 < 50) {
           
         document.getElementById("administration").disabled = true;
+        document.getElementById("ad").style.display = "none";
+        document.getElementById("tech").style.display = "none";
+        document.getElementById("M&P").style.display = "none";
         document.getElementById("technology").disabled = true;
         document.getElementById("medical/pharmacy").disabled = true;
     }
@@ -622,6 +678,7 @@ function hideExamOptions() {
         
         if (branchValue === "PCM" && optionValue === "NEET") {
             examOptions[i].style.display = "none";
+            
         } else if (branchValue === "PCB" && optionValue === "JEE") {
             examOptions[i].style.display = "none";
         } else {

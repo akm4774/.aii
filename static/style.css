@@ -138,7 +138,10 @@ p {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-
+.interest-container input {
+    display: none;
+    cursor: pointer;
+}
 @media screen and (max-width: 652px) {
     .grid-container {
         grid-template-columns: 1fr 1fr 1.2fr;

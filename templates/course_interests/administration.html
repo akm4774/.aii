@@ -42,6 +42,9 @@ ul.ks-cboxtags li label{
 ul.ks-cboxtags li label {
     padding: 8px 10px;
     cursor: pointer;
+    width: 95%;
+    text-align: center;
+    position: relative;
 }
 
 ul.ks-cboxtags li label::before {
@@ -55,6 +58,9 @@ ul.ks-cboxtags li label::before {
     font-size: 8px;
     content: "\f067";
     transition: transform .3s ease-in-out;
+    position: absolute;
+    left: 6px;
+    top: 14px;
 }
 
 ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {

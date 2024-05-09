@@ -25,16 +25,17 @@ def submit_form():
     percentage = float(per_12_input) if per_12_input is not None else 0
     stream = request.form.get('branch_12')
     #rank = int(request.form.get('jee_rank')) if request.form.get('jee_rank') else 0# type: ignore
-    income = int(request.form.get('Family_income')) # type: ignore
+    income = request.form.get('Family_income') # type: ignore
     binterests = request.form.get('selected_interests')
     course = request.form.get('interests')
     jee_rank = request.form.get('jee_rank')
     neet_rank = request.form.get('neet_rank')
+    lnct_cet_rank = request.form.get('lnct-cet')
     clat_rank = request.form.get('clat_rank')
     cuet_rank = request.form.get('cuet_rank')
 
     # Find the first non-empty rank value among the four
-    rank = next((rank for rank in [jee_rank, neet_rank, clat_rank, cuet_rank] if rank), None)
+    rank = next((rank for rank in [jee_rank, neet_rank, lnct_cet_rank, clat_rank, cuet_rank] if rank), None)
 
     # Convert the rank to an integer if it exists
     if rank:
@@ -194,7 +195,7 @@ def branch_b3():
 def get_branch_data(branch):
     branch_data = branchContent.get(branch)
     if branch_data:
-        branch_content = branch_data.get('content', "Content not available for this branch.")
+        branch_content = branch_data.get("content", "Content not available for this branch.")
         branch_image = branch_data.get('image')
     else:
         branch_content = "Content not available."
@@ -279,6 +280,8 @@ def submit():
             marks = int(request.form['jee_rank'])
         elif exam == 'NEET':
             marks = int(request.form['neet_rank'])
+        elif exam == 'LNCT_CET':
+            marks = int(request.form['lnct-cet'])
         elif exam == 'CLAT':
             marks = int(request.form['clat_rank'])
         elif exam == 'CUET':
