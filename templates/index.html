@@ -172,6 +172,7 @@
                         <option value="LNCT_CET">LNCT CET</option>
                         <option value="CLAT">CLAT</option>
                         <option value="CUET">CUET</option>
+                        <option value="Nonee">None</option>
                       </select>
                     </div>
                   </div>
@@ -548,7 +549,13 @@
     function handleRadioVisibility() {
     var branch_12 = document.getElementById("12th_branch").value;
     var per_12 = parseFloat(document.getElementById("12th_marks").value);
-
+    var exam_selected = document.getElementById("exam").value;
+    if(exam_selected === ""){
+      document.getElementById("interest").style.display = "none";
+    }
+    else if(exam_selected !== ""){
+      document.getElementById("interest").style.display = "block";
+    }
     // Get all radio buttons
     var radioButtons = document.querySelectorAll('input[name="interests"]');
 
@@ -665,7 +672,9 @@ document.getElementById("12th_branch").addEventListener("change", function() {
 
 // Add event listener to trigger visibility change on input change
 document.getElementById("12th_marks").addEventListener("input", handleRadioVisibility);
-
+// Add event listener to the exam dropdown
+document.getElementById("exam").addEventListener("change", handleRadioVisibility);
+document.getElementById("12th_branch").addEventListener("change", handleRadioVisibility);
 // Initial visibility check
 handleRadioVisibility();
 function hideExamOptions() {
